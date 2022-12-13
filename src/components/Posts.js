@@ -20,7 +20,12 @@ const Posts = () => {
     <div className='posts'>
       <p>
         {posts.map((post) => {
-          return <div>{post.title}</div>;
+          return (
+            <div>
+              <p>{post.title}</p>
+              <p>{post.author.username}</p>
+            </div>
+          );
         })}
       </p>
     </div>
