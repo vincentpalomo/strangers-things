@@ -1,0 +1,16 @@
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  background-color: rebeccapurple;
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+  color: palevioletred;
+}
+
+a {
+  text-decoration: none;
+  color: palevioletred;
+  font-size: 1.5rem;
+}
