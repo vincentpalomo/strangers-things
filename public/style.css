@@ -14,3 +14,16 @@ a {
   color: palevioletred;
   font-size: 1.5rem;
 }
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.posts {
+  background-color: cornflowerblue;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.9);
+}

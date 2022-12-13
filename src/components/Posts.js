@@ -17,12 +17,12 @@ const Posts = () => {
     setPosts(strangers.posts);
   };
   return (
-    <div className='posts'>
+    <div className='posts-container'>
       <h1>POSTS</h1>
       <div>
         {posts.map((post) => {
           return (
-            <div key={post._id}>
+            <div className='posts' key={post._id}>
               <p>{post.title}</p>
               <p>{post.author.username}</p>
             </div>
