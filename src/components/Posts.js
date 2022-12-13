@@ -26,7 +26,7 @@ const Posts = () => {
               <h3>{post.title}</h3>
               <p>{post.description}</p>
               <p>Price: {post.price}</p>
-              <p>User: {post.author.username}</p>
+              <p>Seller: {post.author.username}</p>
               <p>Location: {post.location}</p>
             </div>
           );
