@@ -58,3 +58,31 @@ body {
   margin: 1rem;
   padding: 1rem;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 2;
+  margin: 1em;
+}
+
+form input {
+  margin: 1em 0;
+  font-size: 1em;
+}
+
+form button {
+  padding: 1em 2em;
+  background-color: #59a9c2;
+  color: white;
+  border: none;
+  font-size: 1em;
+  transition: all 1s ease;
+  outline: none;
+  border-radius: 15px;
+}
+
+form button:hover {
+  background-color: #65878f;
+}
