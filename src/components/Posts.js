@@ -18,6 +18,7 @@ const Posts = () => {
   };
   return (
     <div className='posts'>
+      <h1>POSTS</h1>
       <div>
         {posts.map((post) => {
           return (
