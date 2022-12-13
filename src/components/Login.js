@@ -38,7 +38,7 @@ const Login = () => {
         />
         <button type='submit'>Submit</button>
       </form>
-      <Link className='create-account' to='/account/signup'>
+      <Link className='create-account' to='/account/register'>
         👋 New Account? Sign up here!
       </Link>
     </div>

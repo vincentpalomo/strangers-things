@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-import { Posts, Profile, Login, Home } from './components';
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import { Posts, Profile, Login, Home, Register } from './components';
 
 const App = () => {
   return (
@@ -15,10 +15,10 @@ const App = () => {
           <Link className='navlinks' to='/posts'>
             Posts
           </Link>
-          <Link className='navlinks' to='/profile'>
+          <Link className='navlinks' to='/account'>
             Profile
           </Link>
-          <Link className='navlinks' to='/login'>
+          <Link className='navlinks' to='/account/login'>
             Login
           </Link>
         </div>
@@ -30,12 +30,17 @@ const App = () => {
         <Route path='/posts'>
           <Posts />
         </Route>
-        <Route path='/profile'>
-          <Profile />
-        </Route>
-        <Route path='/login'>
-          <Login />
-        </Route>
+        <Switch>
+          <Route exact path='/account'>
+            <Profile />
+          </Route>
+          <Route path='/account/login'>
+            <Login />
+          </Route>
+          <Route path='/account/register'>
+            <Register />
+          </Route>
+        </Switch>
       </div>
     </BrowserRouter>
   );
