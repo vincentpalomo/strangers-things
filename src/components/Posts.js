@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const Posts = () => {
   const APIURL = `https://strangers-things.herokuapp.com/api/2209-FTB-WEB-PT`;
 
-  const [posts, setPosts] = useState('');
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     fetchPosts();
@@ -18,16 +18,16 @@ const Posts = () => {
   };
   return (
     <div className='posts'>
-      <p>
+      <div>
         {posts.map((post) => {
           return (
-            <div>
+            <div key={post._id}>
               <p>{post.title}</p>
               <p>{post.author.username}</p>
             </div>
           );
         })}
-      </p>
+      </div>
     </div>
   );
 };
