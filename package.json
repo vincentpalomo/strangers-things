@@ -1,7 +1,7 @@
 {
   "name": "strangers-things",
   "version": "1.0.0",
-  "description": "",
+  "description": "synth project for FSA",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Vincent Palomo",
   "license": "ISC",
   "dependencies": {
     "react": "^18.2.0",
@@ -27,5 +27,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vincentpalomo/strangers-things.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vincentpalomo/strangers-things/issues"
   }
 }
