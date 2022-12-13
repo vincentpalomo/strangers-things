@@ -11,6 +11,8 @@ const App = () => {
           <h1>Stranger's Things</h1>
           <Link to='/'>Home</Link>
           <Link to='/Posts'>Posts</Link>
+          <Link to='/Profile'>Profile</Link>
+          <Link to='/Login'>Login</Link>
         </div>
       </div>
       <div className='app'>
