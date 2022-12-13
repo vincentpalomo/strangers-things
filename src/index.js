@@ -9,10 +9,18 @@ const App = () => {
       <div className='container'>
         <div className='navbar'>
           <h1>Stranger's Things</h1>
-          <Link to='/'>Home</Link>
-          <Link to='/posts'>Posts</Link>
-          <Link to='/profile'>Profile</Link>
-          <Link to='/login'>Login</Link>
+          <Link className='navlinks' to='/'>
+            Home
+          </Link>
+          <Link className='navlinks' to='/posts'>
+            Posts
+          </Link>
+          <Link className='navlinks' to='/profile'>
+            Profile
+          </Link>
+          <Link className='navlinks' to='/login'>
+            Login
+          </Link>
         </div>
       </div>
       <div className='app'>

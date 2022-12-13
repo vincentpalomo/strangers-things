@@ -1,3 +1,11 @@
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  background-color: papayawhip;
+}
+
 .navbar {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -5,19 +13,33 @@
   align-items: center;
   background-color: rebeccapurple;
   text-decoration: none;
-  font-family: 'Courier New', Courier, monospace;
   color: palevioletred;
+  /* width: 100%;
+  position: absolute; */
+}
+.navbar:h1 {
+  background-color: rebeccapurple;
 }
 
-a {
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navlinks {
   text-decoration: none;
   color: palevioletred;
   font-size: 1.5rem;
+  background-color: rebeccapurple;
 }
 
 .posts-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .posts {
