@@ -10,17 +10,23 @@ const App = () => {
         <div className='navbar'>
           <h1>Stranger's Things</h1>
           <Link to='/'>Home</Link>
-          <Link to='/Posts'>Posts</Link>
-          <Link to='/Profile'>Profile</Link>
-          <Link to='/Login'>Login</Link>
+          <Link to='/posts'>Posts</Link>
+          <Link to='/profile'>Profile</Link>
+          <Link to='/login'>Login</Link>
         </div>
       </div>
       <div className='app'>
         <Route exact path='/'>
           <Home />
         </Route>
-        <Route path='/Posts'>
+        <Route path='/posts'>
           <Posts />
+        </Route>
+        <Route path='/profile'>
+          <Profile />
+        </Route>
+        <Route path='/login'>
+          <Login />
         </Route>
       </div>
     </BrowserRouter>
