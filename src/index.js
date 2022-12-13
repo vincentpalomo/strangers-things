@@ -8,7 +8,7 @@ const App = () => {
     <BrowserRouter>
       <div className='container'>
         <div className='navbar'>
-          <h1>Stranger's Things</h1>
+          <h1 className='home-title'>Stranger's Things</h1>
           <Link className='navlinks' to='/'>
             Home
           </Link>

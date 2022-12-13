@@ -31,12 +31,12 @@ const Login = () => {
         />
         <label htmlFor='password'>Password</label>
         <input
-          type='text'
+          type='password'
           name='password'
           value={password}
           onChange={handlePassword}
         />
-        <button type='submit'>Submit</button>
+        <button type='submit'>Login</button>
       </form>
       <Link className='create-account' to='/account/register'>
         👋 New Account? Sign up here!

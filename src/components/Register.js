@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -37,7 +38,7 @@ const Register = () => {
         />
         <label htmlFor='password'>Password</label>
         <input
-          type='text'
+          type='password'
           name='password'
           value={password}
           onChange={handlePassword}
@@ -49,8 +50,9 @@ const Register = () => {
           value={location}
           onChange={handleLocation}
         />
-        <button type='submit'>Submit</button>
+        <button type='submit'>Create Account</button>
       </form>
+      <Link to='/account/login'>🤔 Already a user? Sign in!</Link>
     </div>
   );
 };
