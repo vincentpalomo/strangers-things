@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-const Posts = () => {
-  const APIURL = `https://strangers-things.herokuapp.com/api/2209-FTB-WEB-PT`;
+const Posts = ({ APIURL }) => {
+  // const APIURL = `https://strangers-things.herokuapp.com/api/2209-FTB-WEB-PT`;
 
   const [posts, setPosts] = useState([]);
 

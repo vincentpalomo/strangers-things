@@ -1,16 +1,32 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Register = () => {
+const Register = ({ APIURL }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [location, setLocation] = useState('');
 
-  const handleSubmit = (e) => {
+  console.log('user', username, 'pass', password);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setUsername('');
     setPassword('');
-    setLocation('');
+    const response = await fetch(`${APIURL}/users/register`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+          username: `${username}`,
+          password: `${password}`
+        }
+      })
+    }).then(response => response.json())
+      .then(result => {
+        console.log(result);
+      })
+      .catch(console.error);
   };
 
   const handleUsername = (e) => {
@@ -19,10 +35,6 @@ const Register = () => {
 
   const handlePassword = (e) => {
     setPassword(e.target.value);
-  };
-
-  const handleLocation = (e) => {
-    setLocation(e.target.value);
   };
 
   return (
@@ -42,13 +54,6 @@ const Register = () => {
           name='password'
           value={password}
           onChange={handlePassword}
-        />
-        <label htmlFor='password'>Location</label>
-        <input
-          type='text'
-          name='location'
-          value={location}
-          onChange={handleLocation}
         />
         <button type='submit'>Create Account</button>
       </form>

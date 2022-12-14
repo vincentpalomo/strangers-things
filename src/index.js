@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import { Posts, Profile, Login, Home, Register } from './components';
 
 const App = () => {
+  const APIURL = "https://strangers-things.herokuapp.com/api/2209-FTB-WEB-PT";
+
   return (
     <BrowserRouter>
       <div className='container'>
@@ -28,7 +30,7 @@ const App = () => {
           <Home />
         </Route>
         <Route path='/posts'>
-          <Posts />
+          <Posts APIURL={APIURL} />
         </Route>
         <Switch>
           <Route exact path='/account'>
@@ -38,7 +40,7 @@ const App = () => {
             <Login />
           </Route>
           <Route path='/account/register'>
-            <Register />
+            <Register APIURL={APIURL} />
           </Route>
         </Switch>
       </div>
