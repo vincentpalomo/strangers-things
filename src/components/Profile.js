@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Profile = ({ APIURL, token }) => {
   const [userData, setUserData] = useState({});
   const [online, setOnline] = useState(false);
+  let history = useHistory();
   // console.log(userData);
   console.log(online);
 
@@ -28,6 +30,7 @@ const Profile = ({ APIURL, token }) => {
 
   const logout = () => {
     setOnline(false);
+    history.push('./');
   };
 
   return (
