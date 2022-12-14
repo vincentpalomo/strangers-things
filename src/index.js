@@ -4,9 +4,11 @@ import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import { Posts, Profile, Login, Home, Register } from './components';
 
 const App = () => {
-  const APIURL = "https://strangers-things.herokuapp.com/api/2209-FTB-WEB-PT";
-  const [token, setToken] = useState('')
-  
+  const APIURL = 'https://strangers-things.herokuapp.com/api/2209-FTB-WEB-PT';
+  const [token, setToken] = useState('');
+  const [online, setOnline] = useState(false);
+  console.log(online);
+
   return (
     <BrowserRouter>
       <div className='container'>
@@ -18,12 +20,15 @@ const App = () => {
           <Link className='navlinks' to='/posts'>
             Posts
           </Link>
-          <Link className='navlinks' to='/account'>
-            Profile
-          </Link>
-          <Link className='navlinks' to='/account/login'>
-            Login
-          </Link>
+          {online === true ? (
+            <Link className='navlinks' to='/account'>
+              Profile
+            </Link>
+          ) : (
+            <Link className='navlinks' to='/account/login'>
+              Login
+            </Link>
+          )}
         </div>
       </div>
       <div className='app'>
@@ -35,10 +40,15 @@ const App = () => {
         </Route>
         <Switch>
           <Route exact path='/account'>
-            <Profile APIURL={APIURL} token={token}  />
+            <Profile
+              APIURL={APIURL}
+              token={token}
+              online={online}
+              setOnline={setOnline}
+            />
           </Route>
           <Route path='/account/login'>
-            <Login APIURL={APIURL} setToken={setToken} />
+            <Login APIURL={APIURL} setToken={setToken} setOnline={setOnline} />
           </Route>
           <Route path='/account/register'>
             <Register APIURL={APIURL} setToken={setToken} />

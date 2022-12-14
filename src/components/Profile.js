@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-const Profile = ({ APIURL, token }) => {
+const Profile = ({ APIURL, token, setOnline }) => {
   const [userData, setUserData] = useState({});
-  const [online, setOnline] = useState(false);
+  // const [online, setOnline] = useState(false);
   let history = useHistory();
   // console.log(userData);
-  console.log(online);
 
   useEffect(() => {
     loggedInUser();
@@ -23,7 +22,6 @@ const Profile = ({ APIURL, token }) => {
       .then((result) => {
         // console.log(result.data);
         setUserData(result.data);
-        setOnline(true);
       })
       .catch(console.error);
   };
@@ -35,17 +33,19 @@ const Profile = ({ APIURL, token }) => {
 
   return (
     <div className='profile-container'>
-      <h1>Profile</h1>
-      <h3>👋 Welcome back, {userData.username}!</h3>
-      <p>Username: {userData.username}</p>
-      <p>User ID: {userData._id}</p>
-      <p>Cohort: {userData.cohort}</p>
-      <p>Posts: {userData.posts}</p>
-      <p>Messages: {userData.messages}</p>
-      {online ? (
-        <button onClick={logout}>Logout</button>
+      {userData === null ? (
+        <h1>You are not logged in 🤨</h1>
       ) : (
-        <p>You are not logged in 🤨</p>
+        <>
+          <h1>Profile</h1>
+          <h3>👋 Welcome back, {userData.username}!</h3>
+          <p>Username: {userData.username}</p>
+          <p>User ID: {userData._id}</p>
+          <p>Cohort: {userData.cohort}</p>
+          <p>Posts: {userData.posts}</p>
+          <p>Messages: {userData.messages}</p>
+          <button onClick={logout}>Logout</button>
+        </>
       )}
     </div>
   );
