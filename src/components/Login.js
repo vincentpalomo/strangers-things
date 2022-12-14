@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Login = ({ APIURL , setToken }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  let history = useHistory()
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +29,7 @@ const Login = ({ APIURL , setToken }) => {
         console.log(result)
         console.log('token:', result.data.token);
         setToken(result.data.token);
+        history.push('/account')
       })
       .catch(console.error);
   };
