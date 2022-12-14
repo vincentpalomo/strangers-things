@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Login = ({ APIURL }) => {
+const Login = ({ APIURL , setToken }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -11,21 +11,24 @@ const Login = ({ APIURL }) => {
     setPassword('');
 
     const response = await fetch(`${APIURL}/users/login`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         user: {
           username: `${username}`,
-          password: `${password}`
-        }
-      })
-    }).then(response => response.json())
-      .then(result => {
+          password: `${password}`,
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
         console.log(result)
+        console.log('token:', result.data.token);
+        setToken(result.data.token);
       })
-      .catch(console.error)
+      .catch(console.error);
   };
 
   const handleUsername = (e) => {
@@ -35,6 +38,7 @@ const Login = ({ APIURL }) => {
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
+
   return (
     <div className='login-container'>
       <h1>Login</h1>

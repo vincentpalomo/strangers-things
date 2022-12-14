@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import { Posts, Profile, Login, Home, Register } from './components';
 
 const App = () => {
   const APIURL = "https://strangers-things.herokuapp.com/api/2209-FTB-WEB-PT";
+  const [token, setToken] = useState('')
+
+  useEffect(() => {
+    const loggedInUser = async () => {
+      const res = await fetch(`${APIURL}/users/me`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result);
+        })
+        .catch(console.error);
+    };
+    loggedInUser()
+  }, [])
+  
 
   return (
     <BrowserRouter>
@@ -34,13 +53,13 @@ const App = () => {
         </Route>
         <Switch>
           <Route exact path='/account'>
-            <Profile />
+            <Profile token={token} />
           </Route>
           <Route path='/account/login'>
-            <Login APIURL={APIURL} />
+            <Login APIURL={APIURL} setToken={setToken} />
           </Route>
           <Route path='/account/register'>
-            <Register APIURL={APIURL} />
+            <Register APIURL={APIURL} setToken={setToken} />
           </Route>
         </Switch>
       </div>
