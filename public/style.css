@@ -53,6 +53,13 @@ body {
   align-items: center;
 }
 
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .posts {
   background-color: cornflowerblue;
   margin: 1rem;
