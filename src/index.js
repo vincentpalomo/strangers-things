@@ -37,7 +37,7 @@ const App = () => {
             <Profile />
           </Route>
           <Route path='/account/login'>
-            <Login />
+            <Login APIURL={APIURL} />
           </Route>
           <Route path='/account/register'>
             <Register APIURL={APIURL} />

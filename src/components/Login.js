@@ -1,14 +1,31 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ APIURL }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setUsername('');
     setPassword('');
+
+    const response = await fetch(`${APIURL}/users/login`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+          username: `${username}`,
+          password: `${password}`
+        }
+      })
+    }).then(response => response.json())
+      .then(result => {
+        console.log(result)
+      })
+      .catch(console.error)
   };
 
   const handleUsername = (e) => {
