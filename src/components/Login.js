@@ -30,6 +30,7 @@ const Login = ({ APIURL, setToken, setOnline }) => {
         setToken(result.data.token);
         setOnline(true);
         history.push('/account');
+        localStorage.setItem('token', result.data.token);
       })
       .catch(console.error);
   };

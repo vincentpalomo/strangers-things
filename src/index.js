@@ -5,9 +5,17 @@ import { Posts, Profile, Login, Home, Register } from './components';
 
 const App = () => {
   const APIURL = 'https://strangers-things.herokuapp.com/api/2209-FTB-WEB-PT';
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState([]);
   const [online, setOnline] = useState(false);
   console.log(online);
+  // console.log('token from app:', token);
+
+  useEffect(() => {
+    const data = localStorage.getItem('token', JSON.stringify(token));
+    console.log('token from localStorage:', data);
+    setToken(data);
+    setOnline(true);
+  }, []);
 
   return (
     <BrowserRouter>

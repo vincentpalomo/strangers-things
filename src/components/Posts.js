@@ -5,10 +5,6 @@ const Posts = ({ APIURL }) => {
 
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-
   const fetchPosts = async () => {
     const res = await fetch(`${APIURL}/POSTS`);
     const data = await res.json();
@@ -17,6 +13,11 @@ const Posts = ({ APIURL }) => {
     console.log(strangers.posts);
     setPosts(strangers.posts);
   };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
   return (
     <div className='posts-container'>
       <h1>POSTS</h1>
