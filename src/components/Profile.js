@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-const Profile = ({ APIURL, token, setOnline }) => {
+const Profile = ({ APIURL, token, setOnline, setToken }) => {
   const [userData, setUserData] = useState({});
   // const [online, setOnline] = useState(false);
   let history = useHistory();
   // console.log(userData);
-
-  useEffect(() => {
-    loggedInUser();
-  }, []);
 
   const loggedInUser = async () => {
     const res = await fetch(`${APIURL}/users/me`, {
@@ -26,8 +22,13 @@ const Profile = ({ APIURL, token, setOnline }) => {
       .catch(console.error);
   };
 
+  useEffect(() => {
+    loggedInUser();
+  }, []);
+
   const logout = () => {
     setOnline(false);
+    localStorage.removeItem('token');
     history.push('./');
   };
 

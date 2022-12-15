@@ -7,14 +7,18 @@ const App = () => {
   const APIURL = 'https://strangers-things.herokuapp.com/api/2209-FTB-WEB-PT';
   const [token, setToken] = useState([]);
   const [online, setOnline] = useState(false);
-  console.log(online);
+  console.log('is online? ', online);
   // console.log('token from app:', token);
 
   useEffect(() => {
     const data = localStorage.getItem('token', JSON.stringify(token));
     console.log('token from localStorage:', data);
     setToken(data);
-    setOnline(true);
+    if (data) {
+      setOnline(true);
+    } else {
+      setOnline(false);
+    }
   }, []);
 
   return (
@@ -51,6 +55,7 @@ const App = () => {
             <Profile
               APIURL={APIURL}
               token={token}
+              setToken={setToken}
               online={online}
               setOnline={setOnline}
             />
