@@ -12,6 +12,7 @@ const Posts = ({ APIURL }) => {
   const fetchPosts = async () => {
     const res = await fetch(`${APIURL}/POSTS`);
     const data = await res.json();
+    console.log(data);
     const strangers = data.data;
     console.log(strangers.posts);
     setPosts(strangers.posts);

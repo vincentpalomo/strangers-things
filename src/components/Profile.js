@@ -20,7 +20,7 @@ const Profile = ({ APIURL, token, setOnline }) => {
     })
       .then((res) => res.json())
       .then((result) => {
-        // console.log(result.data);
+        console.log(result.data);
         setUserData(result.data);
       })
       .catch(console.error);
