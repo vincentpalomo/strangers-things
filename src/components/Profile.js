@@ -3,9 +3,12 @@ import { useHistory } from 'react-router-dom';
 
 const Profile = ({ APIURL, token, setOnline, setToken }) => {
   const [userData, setUserData] = useState({});
-  // const [online, setOnline] = useState(false);
   let history = useHistory();
-  // console.log(userData);
+  console.log(userData);
+
+  useEffect(() => {
+    loggedInUser();
+  }, []);
 
   const loggedInUser = async () => {
     const res = await fetch(`${APIURL}/users/me`, {
@@ -21,10 +24,6 @@ const Profile = ({ APIURL, token, setOnline, setToken }) => {
       })
       .catch(console.error);
   };
-
-  useEffect(() => {
-    loggedInUser();
-  }, []);
 
   const logout = () => {
     setOnline(false);
@@ -43,7 +42,20 @@ const Profile = ({ APIURL, token, setOnline, setToken }) => {
           <p>Username: {userData.username}</p>
           <p>User ID: {userData._id}</p>
           <p>Cohort: {userData.cohort}</p>
-          <p>Posts: {userData.posts}</p>
+          {/* <p>Posts: {userData.posts}</p> */}
+          <div>
+            {userData.posts.map((post, i) => {
+              return (
+                <div key={i}>
+                  <h3>{post.title}</h3>
+                  <p>{post.description}</p>
+                  <p>Price: {post.price}</p>
+                  <p>Seller: {post.author.username}</p>
+                  <p>Location: {post.location}</p>
+                </div>
+              );
+            })}
+          </div>
           <p>Messages: {userData.messages}</p>
           <button onClick={logout}>Logout</button>
         </>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
-import { Posts, Profile, Login, Home, Register } from './components';
+import { Posts, Profile, Login, Home, Register, AddPost } from './components';
 
 const App = () => {
   const APIURL =
@@ -50,6 +50,9 @@ const App = () => {
         </Route>
         <Route path='/posts'>
           <Posts APIURL={APIURL} />
+        </Route>
+        <Route path='/addpost'>
+          <AddPost APIURL={APIURL} token={token} />
         </Route>
         <Switch>
           <Route exact path='/account'>
