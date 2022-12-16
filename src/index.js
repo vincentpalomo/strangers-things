@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
-import { Posts, Profile, Login, Home, Register, AddPost } from './components';
+import {
+  Posts,
+  Profile,
+  Login,
+  Home,
+  Register,
+  AddPost,
+  Nav,
+} from './components';
 
 export const APIURL =
   'https://strangers-things.herokuapp.com/api/2209-FTB-CT-WEB-PT';
@@ -25,24 +33,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className='container'>
-        <div className='navbar'>
-          <h1 className='home-title'>Stranger's Things</h1>
-          <Link className='navlinks' to='/'>
-            Home
-          </Link>
-          <Link className='navlinks' to='/posts'>
-            Posts
-          </Link>
-          {online === true ? (
-            <Link className='navlinks' to='/account'>
-              Profile
-            </Link>
-          ) : (
-            <Link className='navlinks' to='/account/login'>
-              Login
-            </Link>
-          )}
-        </div>
+        <Nav online={online} />
       </div>
       <div className='app'>
         <Route exact path='/'>
