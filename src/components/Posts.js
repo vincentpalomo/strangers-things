@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AddPost } from './AddPost';
+import { Link } from 'react-router-dom';
 
 const Posts = ({ APIURL }) => {
   const [posts, setPosts] = useState([]);
@@ -19,7 +20,13 @@ const Posts = ({ APIURL }) => {
 
   return (
     <div className='posts-container'>
-      <h1>POSTS</h1>
+      <div>
+        <h1>POSTS</h1>
+        <Link to='/addpost'>
+          <button className='btn'>Create Post</button>
+        </Link>
+      </div>
+
       <div>
         {posts.map((post) => {
           return (

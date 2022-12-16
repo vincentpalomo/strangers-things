@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 
 const AddPost = ({ APIURL, token }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [deliver, setDeliver] = useState(false);
+  let history = useHistory();
 
   const createPost = async (e) => {
     e.preventDefault();
@@ -31,6 +33,7 @@ const AddPost = ({ APIURL, token }) => {
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
+        history.push('./posts');
       })
       .catch(console.error);
   };
@@ -54,7 +57,13 @@ const AddPost = ({ APIURL, token }) => {
 
   return (
     <div className='addpost-container'>
-      <h1>Login</h1>
+      <div>
+        <h1>Create Post 📃</h1>
+        <Link to='/posts'>
+          <button className='btn'>Go back</button>
+        </Link>
+      </div>
+
       <form onSubmit={createPost}>
         <label htmlFor='title'>Title</label>
         <input type='text' name='title' value={title} onChange={handleTitle} />
