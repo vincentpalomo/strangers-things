@@ -57,13 +57,10 @@ const AddPost = ({ APIURL, token }) => {
 
   return (
     <div className='addpost-container'>
-      <div>
-        <h1>Create Post 📃</h1>
-        <Link to='/posts'>
-          <button className='btn'>Go back</button>
-        </Link>
-      </div>
-
+      <h1>Create Post 📃</h1>
+      <Link to='/posts'>
+        <button className='btn'>Go back</button>
+      </Link>
       <form onSubmit={createPost}>
         <label htmlFor='title'>Title</label>
         <input type='text' name='title' value={title} onChange={handleTitle} />
