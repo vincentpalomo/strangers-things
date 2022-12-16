@@ -17,13 +17,17 @@ export const APIURL =
 const App = () => {
   const [token, setToken] = useState('');
   const [online, setOnline] = useState(false);
-  console.log('is online? ', online);
+  const [currentUserID, setCurrentUserID] = useState('');
+  // console.log('is online? ', online);
   // console.log('token from app:', token);
+  console.log(currentUserID);
 
   useEffect(() => {
     const data = localStorage.getItem('token', token);
-    console.log('token from localStorage:', data);
+    // console.log('token from localStorage:', data);
+    const userID = localStorage.getItem('userID', currentUserID);
     setToken(data);
+    setCurrentUserID(userID);
     if (data) {
       setOnline(true);
     } else {
@@ -41,7 +45,12 @@ const App = () => {
           <Home />
         </Route>
         <Route path='/posts'>
-          <Posts APIURL={APIURL} token={token} />
+          <Posts
+            APIURL={APIURL}
+            token={token}
+            currentUserID={currentUserID}
+            online={online}
+          />
         </Route>
         <Route path='/addpost'>
           <AddPost APIURL={APIURL} token={token} />
@@ -51,9 +60,8 @@ const App = () => {
             <Profile
               APIURL={APIURL}
               token={token}
-              setToken={setToken}
-              online={online}
               setOnline={setOnline}
+              setCurrentUserID={setCurrentUserID}
             />
           </Route>
           <Route path='/account/login'>

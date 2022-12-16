@@ -2,9 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { APIURL } from '..';
 import { Link } from 'react-router-dom';
 
-const Posts = ({ token }) => {
-  console.log(token);
+const Posts = ({ token, currentUserID, online }) => {
+  console.log(currentUserID);
   const [posts, setPosts] = useState([]);
+  console.log(token);
+
+  useEffect(() => {
+    console.log('useeffect ran');
+    if (currentUserID === '') {
+      return;
+    }
+  }, [currentUserID]);
+
+  useEffect(() => {
+    if (token === '') {
+      return;
+    }
+    fetchPosts();
+  }, [token]);
 
   const fetchPosts = async () => {
     const res = await fetch(`${APIURL}/POSTS`);
@@ -27,33 +42,41 @@ const Posts = ({ token }) => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
+        posts.filter((p) => p.id !== p.id);
       })
       .catch(console.error);
   };
-
-  useEffect(() => {
-    fetchPosts();
-  }, []);
 
   return (
     <div className='posts-container'>
       <div>
         <h1>POSTS</h1>
-        <Link to='/addpost'>
-          <button className='btn'>Create Post</button>
-        </Link>
+        {online === true ? (
+          <Link to='/addpost'>
+            <button className='btn'>Create Post</button>
+          </Link>
+        ) : null}
       </div>
-
-      <div>
+      {/* {post.active ? } */}
+      <div className='post-map'>
         {posts.map((post) => {
           return (
             <div className='posts' key={post._id}>
-              <h3>{post.title}</h3>
-              <p>{post.description}</p>
-              <p>Price: {post.price}</p>
-              <p>Seller: {post.author.username}</p>
-              <p>Location: {post.location}</p>
-              <button onClick={() => deletePost(post._id)}>Delete</button>
+              {post.active ? (
+                <div>
+                  <h3>{post.title}</h3>
+                  <p>{post.description}</p>
+                  <p>Price: {post.price}</p>
+                  <p>Seller: {post.author.username}</p>
+                  <p>Location: {post.location}</p>
+                  <p>Will Deliver: {post.willDeliver ? 'yes' : 'no'}</p>
+                  {post.author._id === currentUserID ? (
+                    <button onClick={() => deletePost(post._id)}>Delete</button>
+                  ) : null}
+                </div>
+              ) : (
+                'no'
+              )}
             </div>
           );
         })}

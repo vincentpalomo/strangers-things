@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { APIURL } from '..';
 
-const Profile = ({ token, setOnline }) => {
-  console.log('i rendered', token, setOnline);
+const Profile = ({ token, setOnline, setCurrentUserID }) => {
+  // console.log('i rendered', token, setOnline);
   const [userData, setUserData] = useState(null);
   let history = useHistory();
-  console.log(userData);
+  // console.log(userData);
 
   useEffect(() => {
-    console.log('useeffect ran');
+    // console.log('useeffect ran');
     if (token === '') {
       return;
     }
@@ -27,13 +27,17 @@ const Profile = ({ token, setOnline }) => {
       .then((result) => {
         console.log(result.data);
         setUserData(result.data);
+        setCurrentUserID(result.data._id);
+        localStorage.setItem('userID', result.data._id);
       })
       .catch(console.error);
   };
 
   const logout = () => {
     setOnline(false);
+    setCurrentUserID('');
     localStorage.removeItem('token');
+    localStorage.removeItem('userID');
     history.push('./');
   };
 
@@ -48,7 +52,6 @@ const Profile = ({ token, setOnline }) => {
           <p>Username: {userData.username}</p>
           <p>User ID: {userData._id}</p>
           <p>Cohort: {userData.cohort}</p>
-          {/* <p>Posts: {userData.posts}</p> */}
           <div>
             {userData.posts.map((post, i) => {
               return (
