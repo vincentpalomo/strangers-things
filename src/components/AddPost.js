@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
-const AddPost = ({ APIURL, token }) => {
+const AddPost = ({ token }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');

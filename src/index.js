@@ -19,6 +19,7 @@ const App = () => {
   const [token, setToken] = useState('');
   const [online, setOnline] = useState(false);
   const [currentUserID, setCurrentUserID] = useState('');
+  const [postID, setPostID] = useState('');
   // console.log('is online? ', online);
   // console.log('token from app:', token);
   console.log(currentUserID);
@@ -51,6 +52,7 @@ const App = () => {
             token={token}
             currentUserID={currentUserID}
             online={online}
+            setPostID={setPostID}
           />
         </Route>
         <Route path='/addpost'>
@@ -61,6 +63,7 @@ const App = () => {
             APIURL={APIURL}
             token={token}
             currentUserID={currentUserID}
+            postID={postID}
           />
         </Route>
         <Switch>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { APIURL } from '..';
 import { Link } from 'react-router-dom';
 
-const Posts = ({ token, currentUserID, online }) => {
+const Posts = ({ token, currentUserID, online, setPostID }) => {
   console.log(currentUserID);
   const [posts, setPosts] = useState([]);
   console.log(token);
@@ -49,6 +49,7 @@ const Posts = ({ token, currentUserID, online }) => {
 
   const editPost = async (postID) => {
     console.log(postID);
+    setPostID(postID);
   };
 
   return (
