@@ -47,6 +47,10 @@ const Posts = ({ token, currentUserID, online }) => {
       .catch(console.error);
   };
 
+  const editPost = async (postID) => {
+    console.log(postID);
+  };
+
   return (
     <div className='posts-container'>
       <div>
@@ -72,6 +76,11 @@ const Posts = ({ token, currentUserID, online }) => {
                   <p>Will Deliver: {post.willDeliver ? 'yes' : 'no'}</p>
                   {post.author._id === currentUserID ? (
                     <button onClick={() => deletePost(post._id)}>Delete</button>
+                  ) : null}
+                  {post.author._id === currentUserID ? (
+                    <Link to='/editpost'>
+                      <button onClick={() => editPost(post._id)}>Edit</button>
+                    </Link>
                   ) : null}
                 </div>
               ) : (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import {
   Posts,
   Profile,
@@ -8,6 +8,7 @@ import {
   Home,
   Register,
   AddPost,
+  EditPost,
   Nav,
 } from './components';
 
@@ -54,6 +55,13 @@ const App = () => {
         </Route>
         <Route path='/addpost'>
           <AddPost APIURL={APIURL} token={token} />
+        </Route>
+        <Route path='/editpost'>
+          <EditPost
+            APIURL={APIURL}
+            token={token}
+            currentUserID={currentUserID}
+          />
         </Route>
         <Switch>
           <Route exact path='/account'>

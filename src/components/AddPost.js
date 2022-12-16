@@ -5,6 +5,7 @@ const AddPost = ({ APIURL, token }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
+  const [location, setLocation] = useState('');
   const [deliver, setDeliver] = useState(false);
   let history = useHistory();
 
@@ -13,6 +14,7 @@ const AddPost = ({ APIURL, token }) => {
     setTitle('');
     setDescription('');
     setPrice('');
+    setLocation('');
     setDeliver(false);
 
     const res = await fetch(`${APIURL}/posts`, {
@@ -26,6 +28,7 @@ const AddPost = ({ APIURL, token }) => {
           title: `${title}`,
           description: `${description}`,
           price: `${price}`,
+          location: `${location}`,
           willDeliver: `${deliver}`,
         },
       }),
@@ -48,6 +51,10 @@ const AddPost = ({ APIURL, token }) => {
 
   const handlePrice = (e) => {
     setPrice(e.target.value);
+  };
+
+  const handleLocation = (e) => {
+    setLocation(e.target.value);
   };
 
   const handleDeliver = (e) => {
@@ -73,6 +80,13 @@ const AddPost = ({ APIURL, token }) => {
         />
         <label htmlFor='price'>price</label>
         <input type='text' name='price' value={price} onChange={handlePrice} />
+        <label htmlFor='location'>location</label>
+        <input
+          type='text'
+          name='location'
+          value={location}
+          onChange={handleLocation}
+        />
         <label htmlFor='deliver'>deliver</label>
         <input
           type='checkbox'
