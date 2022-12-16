@@ -41,7 +41,7 @@ const App = () => {
           <Home />
         </Route>
         <Route path='/posts'>
-          <Posts APIURL={APIURL} />
+          <Posts APIURL={APIURL} token={token} />
         </Route>
         <Route path='/addpost'>
           <AddPost APIURL={APIURL} token={token} />

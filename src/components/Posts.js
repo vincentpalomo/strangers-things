@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { AddPost } from './AddPost';
+import { APIURL } from '..';
 import { Link } from 'react-router-dom';
 
-const Posts = ({ APIURL }) => {
+const Posts = ({ token }) => {
+  console.log(token);
   const [posts, setPosts] = useState([]);
 
   const fetchPosts = async () => {
@@ -12,6 +13,22 @@ const Posts = ({ APIURL }) => {
     const strangers = data.data;
     console.log(strangers.posts);
     setPosts(strangers.posts);
+  };
+
+  const deletePost = async (postID) => {
+    console.log(postID);
+    const res = await fetch(`${APIURL}/posts/${postID}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch(console.error);
   };
 
   useEffect(() => {
@@ -36,6 +53,7 @@ const Posts = ({ APIURL }) => {
               <p>Price: {post.price}</p>
               <p>Seller: {post.author.username}</p>
               <p>Location: {post.location}</p>
+              <button onClick={() => deletePost(post._id)}>Delete</button>
             </div>
           );
         })}
