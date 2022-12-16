@@ -3,13 +3,13 @@ import { useHistory } from 'react-router-dom';
 import { APIURL } from '..';
 
 const Profile = ({ token, setOnline, setCurrentUserID }) => {
-  // console.log('i rendered', token, setOnline);
+  console.log('i rendered', token, setOnline);
   const [userData, setUserData] = useState(null);
   let history = useHistory();
-  // console.log(userData);
+  console.log('user data', userData);
 
   useEffect(() => {
-    // console.log('useeffect ran');
+    console.log('useeffect ran');
     if (token === '') {
       return;
     }
@@ -65,7 +65,15 @@ const Profile = ({ token, setOnline, setCurrentUserID }) => {
               );
             })}
           </div>
-          <p>Messages: {userData.messages}</p>
+          {userData.messages.map((message, i) => {
+            return (
+              <div key={i}>
+                <h3>Messages</h3>
+                <p>From Post: {message.post.title}</p>
+                <p>{message.content}</p>
+              </div>
+            );
+          })}
           <button onClick={logout}>Logout</button>
         </>
       )}
