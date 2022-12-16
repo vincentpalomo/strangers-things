@@ -42,7 +42,7 @@ const Posts = ({ token, currentUserID, online }) => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        posts.filter((p) => p.id !== p.id);
+        fetchPosts();
       })
       .catch(console.error);
   };
