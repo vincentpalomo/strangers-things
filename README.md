@@ -1,5 +1,7 @@
 # strangers-things
 
+https://strangers-things.herokuapp.com/api/
+
 synth project for FSA
 
 Grading Stranger's Things (Requirements & Mockup)
