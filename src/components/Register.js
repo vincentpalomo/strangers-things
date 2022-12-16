@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-const Register = ({ APIURL }) => {
+const Register = ({ APIURL, setToken, setOnline }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  let history = useHistory();
 
   console.log('user', username, 'pass', password);
 
@@ -11,20 +12,26 @@ const Register = ({ APIURL }) => {
     e.preventDefault();
     setUsername('');
     setPassword('');
+
     const response = await fetch(`${APIURL}/users/register`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         user: {
           username: `${username}`,
-          password: `${password}`
-        }
-      })
-    }).then(response => response.json())
-      .then(result => {
+          password: `${password}`,
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
         console.log(result);
+        setToken(result.data.token);
+        setOnline(true);
+        history.push('/account');
+        localStorage.setItem('token', result.data.token);
       })
       .catch(console.error);
   };

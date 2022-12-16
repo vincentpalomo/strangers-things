@@ -4,7 +4,8 @@ import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import { Posts, Profile, Login, Home, Register } from './components';
 
 const App = () => {
-  const APIURL = 'https://strangers-things.herokuapp.com/api/2209-FTB-WEB-PT';
+  const APIURL =
+    'https://strangers-things.herokuapp.com/api/2209-FTB-CT-WEB-PT';
   const [token, setToken] = useState([]);
   const [online, setOnline] = useState(false);
   console.log('is online? ', online);
@@ -64,7 +65,11 @@ const App = () => {
             <Login APIURL={APIURL} setToken={setToken} setOnline={setOnline} />
           </Route>
           <Route path='/account/register'>
-            <Register APIURL={APIURL} setToken={setToken} />
+            <Register
+              APIURL={APIURL}
+              setToken={setToken}
+              setOnline={setOnline}
+            />
           </Route>
         </Switch>
       </div>

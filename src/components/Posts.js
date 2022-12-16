@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { AddPost } from './AddPost';
 
 const Posts = ({ APIURL }) => {
-  // const APIURL = `https://strangers-things.herokuapp.com/api/2209-FTB-WEB-PT`;
-
   const [posts, setPosts] = useState([]);
 
   const fetchPosts = async () => {
