@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { APIURL } from '..';
 
-const Profile = ({ APIURL, token, setOnline, setToken }) => {
-  const [userData, setUserData] = useState({});
+const Profile = ({ token, setOnline }) => {
+  console.log('i rendered', token, setOnline);
+  const [userData, setUserData] = useState(null);
   let history = useHistory();
   console.log(userData);
 
   useEffect(() => {
+    console.log('useeffect ran');
+    if (token === '') {
+      return;
+    }
     loggedInUser();
-  }, []);
+  }, [token]);
 
   const loggedInUser = async () => {
     const res = await fetch(`${APIURL}/users/me`, {

@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import { Posts, Profile, Login, Home, Register, AddPost } from './components';
 
+export const APIURL =
+  'https://strangers-things.herokuapp.com/api/2209-FTB-CT-WEB-PT';
 const App = () => {
-  const APIURL =
-    'https://strangers-things.herokuapp.com/api/2209-FTB-CT-WEB-PT';
-  const [token, setToken] = useState([]);
+  const [token, setToken] = useState('');
   const [online, setOnline] = useState(false);
   console.log('is online? ', online);
   // console.log('token from app:', token);
 
   useEffect(() => {
-    const data = localStorage.getItem('token', JSON.stringify(token));
+    const data = localStorage.getItem('token', token);
     console.log('token from localStorage:', data);
     setToken(data);
     if (data) {
