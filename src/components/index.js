@@ -5,5 +5,6 @@ export { default as Home } from './Home';
 export { default as Register } from './Register';
 export { default as AddPost } from './AddPost';
 export { default as EditPost } from './EditPost';
+export { default as SinglePost } from './SinglePost';
 export { default as Messages } from './Messages';
 export { default as Nav } from './Nav';

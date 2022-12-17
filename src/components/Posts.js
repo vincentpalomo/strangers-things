@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { APIURL } from '..';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
+import SinglePost from './SinglePost';
 
-const Posts = ({ token, currentUserID, online, setPostID }) => {
+const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
   // console.log(currentUserID);
   const [posts, setPosts] = useState([]);
   // console.log(token);
@@ -53,6 +54,10 @@ const Posts = ({ token, currentUserID, online, setPostID }) => {
     setPostID(postID);
   };
 
+  const sendPost = async (post) => {
+    setPostData(post);
+  };
+
   return (
     <div className='posts-container'>
       <div>
@@ -70,7 +75,9 @@ const Posts = ({ token, currentUserID, online, setPostID }) => {
             <div className='posts' key={post._id}>
               {post.active ? (
                 <div>
-                  <h3>{post.title}</h3>
+                  <Link to={`/posts/singlepost`} onClick={() => sendPost(post)}>
+                    <h3>{post.title}</h3>
+                  </Link>
                   <p>{post.description}</p>
                   <p>Price: {post.price}</p>
                   <p>Seller: {post.author.username}</p>

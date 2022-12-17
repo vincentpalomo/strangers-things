@@ -72,7 +72,7 @@ const Profile = ({
       {userData === null ? (
         <h1>You are not logged in 🤨</h1>
       ) : (
-        <>
+        <div>
           <h1>Profile</h1>
           <h3>👋 Welcome back, {userData.username}!</h3>
           <p>Username: {userData.username}</p>
@@ -131,7 +131,7 @@ const Profile = ({
           <div>
             <button onClick={logout}>Logout</button>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

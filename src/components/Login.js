@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { APIURL } from '..';
 
-const Login = ({ APIURL, setToken, setOnline }) => {
+const Login = ({ setToken, setOnline }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   let history = useHistory();

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { APIURL } from '..';
 
 const EditPost = ({ token, postID }) => {
@@ -62,12 +62,15 @@ const EditPost = ({ token, postID }) => {
     setDeliver(e.target.checked);
     console.log(e);
   };
+
+  const previousPage = () => {
+    history.goBack();
+  };
+
   return (
     <div className='editpost-container'>
       <h1>Edit Post 📃</h1>
-      <Link to='/posts'>
-        <button className='btn'>Go back</button>
-      </Link>
+      <button onClick={previousPage}>Go back</button>
       <form onSubmit={editPost}>
         <label htmlFor='title'>Title</label>
         <input type='text' name='title' value={title} onChange={handleTitle} />

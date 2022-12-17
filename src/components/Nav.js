@@ -1,9 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-const Nav = ({ online }) => {
+import { Link, useHistory } from 'react-router-dom';
+const Nav = ({ online, setOnline, setCurrentUserID }) => {
+  let history = useHistory();
+
+  const logout = () => {
+    setOnline(false);
+    setCurrentUserID('');
+    localStorage.removeItem('token');
+    localStorage.removeItem('userID');
+    history.push('./');
+  };
+
   return (
     <div className='navbar'>
-      <h1 className='home-title'>Stranger's Things</h1>
+      <Link to='/'>
+        <h1 className='title'>Stranger's Things</h1>
+      </Link>
       <Link className='navlinks' to='/'>
         Home
       </Link>
@@ -17,6 +29,12 @@ const Nav = ({ online }) => {
       ) : (
         <Link className='navlinks' to='/account/login'>
           Login
+        </Link>
+      )}
+      {online === true && (
+        <Link className='navlinks' to='/' onClick={logout}>
+          Logout
+          {/* <button className='navlinks'>Logout</button> */}
         </Link>
       )}
     </div>

@@ -13,15 +13,18 @@ body {
   align-items: center;
   background-color: rebeccapurple;
   text-decoration: none;
+  font-weight: bolder;
   color: palevioletred;
   padding: 0.5rem;
   /* width: 100%;
   position: absolute; */
 }
-.navbar,
-.home-title {
-  background-color: rebeccapurple;
-  padding: 0.5rem;
+
+.title,
+h1,
+a {
+  color: palevioletred;
+  text-decoration: none;
 }
 
 .home {
@@ -55,6 +58,13 @@ body {
 }
 
 .profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.singlepost-container {
   display: flex;
   flex-direction: column;
   justify-content: center;

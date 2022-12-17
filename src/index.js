@@ -9,6 +9,7 @@ import {
   Register,
   AddPost,
   EditPost,
+  SinglePost,
   Messages,
   Nav,
 } from './components';
@@ -21,6 +22,7 @@ const App = () => {
   const [online, setOnline] = useState(false);
   const [currentUserID, setCurrentUserID] = useState('');
   const [postID, setPostID] = useState('');
+  const [postData, setPostData] = useState();
   // console.log('is online? ', online);
   // console.log('token from app:', token);
   // console.log(currentUserID);
@@ -41,7 +43,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className='container'>
-        <Nav online={online} />
+        <Nav
+          online={online}
+          setOnline={setOnline}
+          setCurrentUserID={setCurrentUserID}
+        />
       </div>
       <div className='app'>
         <Route exact path='/'>
@@ -49,22 +55,32 @@ const App = () => {
         </Route>
         <Route exact path='/posts'>
           <Posts
-            APIURL={APIURL}
             token={token}
             currentUserID={currentUserID}
             online={online}
             setPostID={setPostID}
+            setPostData={setPostData}
           />
         </Route>
         <Route path='/posts/addpost'>
-          <AddPost APIURL={APIURL} token={token} />
+          <AddPost token={token} />
         </Route>
         <Route path='/posts/editpost'>
           <EditPost
-            APIURL={APIURL}
             token={token}
             currentUserID={currentUserID}
             postID={postID}
+          />
+        </Route>
+        <Route path='/posts/singlepost'>
+          <SinglePost
+            token={token}
+            currentUserID={currentUserID}
+            online={online}
+            setPostID={setPostID}
+            setPostData={setPostData}
+            postID={postID}
+            postData={postData}
           />
         </Route>
         <Route path='/account/messages'>
@@ -77,7 +93,6 @@ const App = () => {
         <Switch>
           <Route exact path='/account'>
             <Profile
-              APIURL={APIURL}
               token={token}
               setOnline={setOnline}
               currentUserID={currentUserID}
@@ -86,14 +101,10 @@ const App = () => {
             />
           </Route>
           <Route path='/account/login'>
-            <Login APIURL={APIURL} setToken={setToken} setOnline={setOnline} />
+            <Login setToken={setToken} setOnline={setOnline} />
           </Route>
           <Route path='/account/register'>
-            <Register
-              APIURL={APIURL}
-              setToken={setToken}
-              setOnline={setOnline}
-            />
+            <Register setToken={setToken} setOnline={setOnline} />
           </Route>
         </Switch>
       </div>
