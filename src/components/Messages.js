@@ -3,8 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { APIURL } from '..';
 
 const Messages = ({ token, currentUserID, postID }) => {
-  console.log('post id:', postID);
-  console.log('current user id:', currentUserID);
+  // console.log('post id:', postID);
+  // console.log('current user id:', currentUserID);
   const [content, setContent] = useState('');
   let history = useHistory();
 
@@ -27,7 +27,6 @@ const Messages = ({ token, currentUserID, postID }) => {
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
-        setContent('');
         history.goBack();
       })
       .catch(console.error);
