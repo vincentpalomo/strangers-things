@@ -63,12 +63,14 @@ const AddPost = ({ token }) => {
     console.log(e);
   };
 
+  const previousPage = () => {
+    history.goBack();
+  };
+
   return (
     <div className='addpost-container'>
       <h1>Create Post 📃</h1>
-      <Link to='/posts'>
-        <button className='btn'>Go back</button>
-      </Link>
+      <button onClick={previousPage}>Go back</button>
       <form onSubmit={createPost}>
         <label htmlFor='title'>Title</label>
         <input

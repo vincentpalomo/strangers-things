@@ -9,6 +9,7 @@ import {
   Register,
   AddPost,
   EditPost,
+  Messages,
   Nav,
 } from './components';
 
@@ -22,7 +23,7 @@ const App = () => {
   const [postID, setPostID] = useState('');
   // console.log('is online? ', online);
   // console.log('token from app:', token);
-  console.log(currentUserID);
+  // console.log(currentUserID);
 
   useEffect(() => {
     const data = localStorage.getItem('token', token);
@@ -46,7 +47,7 @@ const App = () => {
         <Route exact path='/'>
           <Home />
         </Route>
-        <Route path='/posts'>
+        <Route exact path='/posts'>
           <Posts
             APIURL={APIURL}
             token={token}
@@ -55,12 +56,19 @@ const App = () => {
             setPostID={setPostID}
           />
         </Route>
-        <Route path='/addpost'>
+        <Route path='/posts/addpost'>
           <AddPost APIURL={APIURL} token={token} />
         </Route>
-        <Route path='/editpost'>
+        <Route path='/posts/editpost'>
           <EditPost
             APIURL={APIURL}
+            token={token}
+            currentUserID={currentUserID}
+            postID={postID}
+          />
+        </Route>
+        <Route path='/account/messages'>
+          <Messages
             token={token}
             currentUserID={currentUserID}
             postID={postID}
@@ -72,6 +80,7 @@ const App = () => {
               APIURL={APIURL}
               token={token}
               setOnline={setOnline}
+              currentUserID={currentUserID}
               setCurrentUserID={setCurrentUserID}
               setPostID={setPostID}
             />

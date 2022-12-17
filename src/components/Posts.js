@@ -3,12 +3,12 @@ import { APIURL } from '..';
 import { Link } from 'react-router-dom';
 
 const Posts = ({ token, currentUserID, online, setPostID }) => {
-  console.log(currentUserID);
+  // console.log(currentUserID);
   const [posts, setPosts] = useState([]);
-  console.log(token);
+  // console.log(token);
 
   useEffect(() => {
-    console.log('useeffect ran');
+    // console.log('useeffect ran');
     if (currentUserID === '') {
       return;
     }
@@ -58,7 +58,7 @@ const Posts = ({ token, currentUserID, online, setPostID }) => {
       <div>
         <h1>POSTS</h1>
         {online === true ? (
-          <Link to='/addpost'>
+          <Link to='/posts/addpost'>
             <button className='btn'>Create Post</button>
           </Link>
         ) : null}
@@ -77,13 +77,22 @@ const Posts = ({ token, currentUserID, online, setPostID }) => {
                   <p>Location: {post.location}</p>
                   <p>Will Deliver: {post.willDeliver ? 'yes' : 'no'}</p>
                   {post.author._id === currentUserID ? (
-                    <Link to='/editpost'>
+                    <Link to='/posts/editpost'>
                       <button onClick={() => editPost(post._id)}>Edit</button>
                     </Link>
-                  ) : null}
+                  ) : (
+                    <Link to='/account/messages'>
+                      <button onClick={() => editPost(post._id)}>
+                        Message
+                      </button>
+                    </Link>
+                  )}
                   {post.author._id === currentUserID ? (
                     <button onClick={() => deletePost(post._id)}>Delete</button>
                   ) : null}
+                  {/* {post.author._id !== currentUserID ? (
+                    <button onClick={() => editPost(post._id)}>Message</button>
+                  ) : null} */}
                 </div>
               ) : (
                 'no'

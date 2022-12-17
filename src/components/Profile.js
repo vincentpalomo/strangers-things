@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { APIURL } from '..';
 
-const Profile = ({ token, setOnline, setCurrentUserID, setPostID }) => {
+const Profile = ({
+  token,
+  setOnline,
+  currentUserID,
+  setCurrentUserID,
+  setPostID,
+}) => {
   // console.log('i rendered', token, setOnline);
   const [userData, setUserData] = useState(null);
   let history = useHistory();
@@ -72,7 +78,7 @@ const Profile = ({ token, setOnline, setCurrentUserID, setPostID }) => {
           <p>Username: {userData.username}</p>
           <p>User ID: {userData._id}</p>
           <p>Cohort: {userData.cohort}</p>
-          <Link to='/addpost'>
+          <Link to='/posts/addpost'>
             <button>Create Post</button>
           </Link>
           <div>
@@ -86,7 +92,7 @@ const Profile = ({ token, setOnline, setCurrentUserID, setPostID }) => {
                       <p>{post.description}</p>
                       <p>Price: {post.price}</p>
                       <p>Location: {post.location}</p>
-                      <Link to='/editpost'>
+                      <Link to='/posts/editpost'>
                         <button onClick={() => editPost(post._id)}>Edit</button>
                       </Link>
                       <button onClick={() => deletePost(post._id)}>
@@ -109,7 +115,15 @@ const Profile = ({ token, setOnline, setCurrentUserID, setPostID }) => {
                   <p>
                     {message.fromUser.username}: {message.content}
                   </p>
-                  <button>Reply</button>
+                  {currentUserID !== message.fromUser._id ? (
+                    <div>
+                      <Link to='/account/messages'>
+                        <button onClick={() => editPost(message.post._id)}>
+                          Reply
+                        </button>
+                      </Link>
+                    </div>
+                  ) : null}
                 </div>
               );
             })}

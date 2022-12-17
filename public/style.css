@@ -14,13 +14,14 @@ body {
   background-color: rebeccapurple;
   text-decoration: none;
   color: palevioletred;
-  padding: .5rem;
+  padding: 0.5rem;
   /* width: 100%;
   position: absolute; */
 }
-.navbar, .home-title {
+.navbar,
+.home-title {
   background-color: rebeccapurple;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .home {
@@ -35,7 +36,7 @@ body {
   color: palevioletred;
   font-size: 1.5rem;
   background-color: rebeccapurple;
-  padding: .5rem;
+  padding: 0.5rem;
   text-align: center;
   transition: all 1s ease;
   width: 155px;
@@ -54,13 +55,6 @@ body {
 }
 
 .profile-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.editpost-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -108,7 +102,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: 1rem;
-  padding: 1rem; 
+  padding: 1rem;
 }
 
 .addpost-container {
@@ -116,6 +110,24 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.editpost-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 1rem;
   padding: 1rem;
 }
