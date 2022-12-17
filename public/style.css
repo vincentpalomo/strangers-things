@@ -60,12 +60,37 @@ body {
   align-items: center;
 }
 
+.editpost-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .posts {
   background-color: cornflowerblue;
   margin: 1rem;
   padding: 1rem;
   border-radius: 15px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.9);
+  width: 100%;
+  max-width: 800px;
+  word-wrap: break-word;
+}
+
+.posts:empty {
+  display: none;
+}
+
+.messages {
+  background-color: palevioletred;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.9);
+  width: 100%;
+  max-width: 800px;
+  word-wrap: break-word;
 }
 
 .login-container {

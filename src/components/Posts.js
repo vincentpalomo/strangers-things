@@ -12,6 +12,7 @@ const Posts = ({ token, currentUserID, online, setPostID }) => {
     if (currentUserID === '') {
       return;
     }
+    fetchPosts();
   }, [currentUserID]);
 
   useEffect(() => {
@@ -76,12 +77,12 @@ const Posts = ({ token, currentUserID, online, setPostID }) => {
                   <p>Location: {post.location}</p>
                   <p>Will Deliver: {post.willDeliver ? 'yes' : 'no'}</p>
                   {post.author._id === currentUserID ? (
-                    <button onClick={() => deletePost(post._id)}>Delete</button>
-                  ) : null}
-                  {post.author._id === currentUserID ? (
                     <Link to='/editpost'>
                       <button onClick={() => editPost(post._id)}>Edit</button>
                     </Link>
+                  ) : null}
+                  {post.author._id === currentUserID ? (
+                    <button onClick={() => deletePost(post._id)}>Delete</button>
                   ) : null}
                 </div>
               ) : (

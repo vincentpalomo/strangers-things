@@ -37,7 +37,7 @@ const EditPost = ({ token, postID }) => {
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
-        history.push('./posts');
+        history.goBack();
       })
       .catch(console.error);
   };

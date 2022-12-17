@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
+import { APIURL } from '..';
 
 const AddPost = ({ token }) => {
   const [title, setTitle] = useState('');
@@ -36,7 +37,7 @@ const AddPost = ({ token }) => {
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
-        history.push('./posts');
+        history.goBack();
       })
       .catch(console.error);
   };
@@ -70,16 +71,29 @@ const AddPost = ({ token }) => {
       </Link>
       <form onSubmit={createPost}>
         <label htmlFor='title'>Title</label>
-        <input type='text' name='title' value={title} onChange={handleTitle} />
+        <input
+          type='text'
+          name='title'
+          value={title}
+          onChange={handleTitle}
+          required
+        />
         <label htmlFor='description'>description</label>
         <input
           type='description'
           name='description'
           value={description}
           onChange={handleDescription}
+          required
         />
         <label htmlFor='price'>price</label>
-        <input type='text' name='price' value={price} onChange={handlePrice} />
+        <input
+          type='text'
+          name='price'
+          value={price}
+          onChange={handlePrice}
+          required
+        />
         <label htmlFor='location'>location</label>
         <input
           type='text'
