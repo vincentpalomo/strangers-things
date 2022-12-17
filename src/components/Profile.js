@@ -76,6 +76,7 @@ const Profile = ({ token, setOnline, setCurrentUserID, setPostID }) => {
             <button>Create Post</button>
           </Link>
           <div>
+            <h1>My Posts:</h1>
             {userData.posts.map((post, i) => {
               return (
                 <div className='posts' key={i}>
@@ -84,7 +85,6 @@ const Profile = ({ token, setOnline, setCurrentUserID, setPostID }) => {
                       <h3>{post.title}</h3>
                       <p>{post.description}</p>
                       <p>Price: {post.price}</p>
-                      <p>Seller: {post.author.username}</p>
                       <p>Location: {post.location}</p>
                       <Link to='/editpost'>
                         <button onClick={() => editPost(post._id)}>Edit</button>
@@ -99,6 +99,7 @@ const Profile = ({ token, setOnline, setCurrentUserID, setPostID }) => {
             })}
           </div>
           <div>
+            <h1>Messages:</h1>
             {userData.messages.map((message, i) => {
               return (
                 <div className='messages' key={i}>
