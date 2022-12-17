@@ -78,9 +78,13 @@ const Profile = ({
           <p>Username: {userData.username}</p>
           <p>User ID: {userData._id}</p>
           <p>Cohort: {userData.cohort}</p>
-          <Link to='/posts/addpost'>
-            <button>Create Post</button>
-          </Link>
+          <div>
+            <Link to='/posts/addpost'>
+              <button>Create Post</button>
+            </Link>
+            <button onClick={logout}>Logout</button>
+          </div>
+
           <div>
             <h1>My Posts:</h1>
             {userData.posts.map((post, i) => {
@@ -127,9 +131,6 @@ const Profile = ({
                 </div>
               );
             })}
-          </div>
-          <div>
-            <button onClick={logout}>Logout</button>
           </div>
         </div>
       )}
