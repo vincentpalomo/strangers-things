@@ -49,7 +49,7 @@ const Posts = ({ token, currentUserID, online, setPostID }) => {
   };
 
   const editPost = async (postID) => {
-    console.log(postID);
+    // console.log(postID);
     setPostID(postID);
   };
 
@@ -85,7 +85,11 @@ const Posts = ({ token, currentUserID, online, setPostID }) => {
                     <button onClick={() => deletePost(post._id)}>Delete</button>
                   ) : null}
                   {post.author._id !== currentUserID && online === true ? (
-                    <button onClick={() => editPost(post._id)}>Message</button>
+                    <Link to='/account/messages'>
+                      <button onClick={() => editPost(post._id)}>
+                        Message
+                      </button>
+                    </Link>
                   ) : null}
                 </div>
               ) : (

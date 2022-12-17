@@ -92,6 +92,7 @@ const Profile = ({
                       <p>{post.description}</p>
                       <p>Price: {post.price}</p>
                       <p>Location: {post.location}</p>
+                      <p>Will Deliver: {post.willDeliver ? 'yes' : 'no'} </p>
                       <Link to='/posts/editpost'>
                         <button onClick={() => editPost(post._id)}>Edit</button>
                       </Link>
@@ -112,9 +113,8 @@ const Profile = ({
                   <h3>Messages</h3>
                   <p>From Post: {message.post.title}</p>
                   <p>Post ID: {message.post._id}</p>
-                  <p>
-                    {message.fromUser.username}: {message.content}
-                  </p>
+                  <p>User: {message.fromUser.username}</p>
+                  <p>Message: {message.content}</p>
                   {currentUserID !== message.fromUser._id ? (
                     <div>
                       <Link to='/account/messages'>
