@@ -44,7 +44,7 @@ const Messages = ({ token, currentUserID, postID }) => {
     <div className='message-container'>
       <button onClick={previousPage}>Go back</button>
       <form onSubmit={messages}>
-        <label htmlFor='content'>content</label>
+        <label htmlFor='content'>Send your message to the Seller </label>
         <input
           type='text'
           name='content'
