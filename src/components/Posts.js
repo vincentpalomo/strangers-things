@@ -80,19 +80,13 @@ const Posts = ({ token, currentUserID, online, setPostID }) => {
                     <Link to='/posts/editpost'>
                       <button onClick={() => editPost(post._id)}>Edit</button>
                     </Link>
-                  ) : (
-                    <Link to='/account/messages'>
-                      <button onClick={() => editPost(post._id)}>
-                        Message
-                      </button>
-                    </Link>
-                  )}
+                  ) : null}
                   {post.author._id === currentUserID ? (
                     <button onClick={() => deletePost(post._id)}>Delete</button>
                   ) : null}
-                  {/* {post.author._id !== currentUserID ? (
+                  {post.author._id !== currentUserID && online === true ? (
                     <button onClick={() => editPost(post._id)}>Message</button>
-                  ) : null} */}
+                  ) : null}
                 </div>
               ) : (
                 'no'
