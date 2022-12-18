@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { APIURL } from '..';
 import { Link, Route } from 'react-router-dom';
-import SinglePost from './SinglePost';
+import { fetchAllPosts } from '../api/api';
 
 const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
   // console.log(currentUserID);
@@ -24,13 +24,23 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
   }, [token]);
 
   const fetchPosts = async () => {
-    const res = await fetch(`${APIURL}/POSTS`);
-    const data = await res.json();
-    console.log(data);
-    const strangers = data.data;
-    console.log(strangers.posts);
-    setPosts(strangers.posts);
+    try {
+      const post = await fetchAllPosts();
+      setPosts(post);
+      console.log(post);
+    } catch (error) {
+      console.error(error);
+    }
   };
+
+  // const fetchPosts = async () => {
+  //   const res = await fetch(`${APIURL}/POSTS`);
+  //   const data = await res.json();
+  //   console.log(data);
+  //   const strangers = data.data;
+  //   console.log(strangers.posts);
+  //   setPosts(strangers.posts);
+  // };
 
   const deletePost = async (postID) => {
     console.log(postID);
@@ -78,11 +88,11 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
                   <Link to={`/posts/singlepost`} onClick={() => sendPost(post)}>
                     <h3>{post.title}</h3>
                   </Link>
-                  <p>{post.description}</p>
+                  {/* <p>{post.description}</p>
                   <p>Price: {post.price}</p>
                   <p>Seller: {post.author.username}</p>
                   <p>Location: {post.location}</p>
-                  <p>Will Deliver: {post.willDeliver ? 'yes' : 'no'}</p>
+                  <p>Will Deliver: {post.willDeliver ? 'yes' : 'no'}</p> */}
                   {post.author._id === currentUserID ? (
                     <Link to='/posts/editpost'>
                       <button onClick={() => editPost(post._id)}>Edit</button>
