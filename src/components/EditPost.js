@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { APIURL } from '..';
+import { fetchEditPost } from '../api/api';
 
 const EditPost = ({ token, postID }) => {
   const [title, setTitle] = useState('');
@@ -18,28 +19,21 @@ const EditPost = ({ token, postID }) => {
     setLocation('');
     setDeliver(false);
 
-    const res = await fetch(`${APIURL}/posts/${postID}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        post: {
-          title: `${title}`,
-          description: `${description}`,
-          price: `${price}`,
-          location: `${location}`,
-          willDeliver: `${deliver}`,
-        },
-      }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        history.goBack();
-      })
-      .catch(console.error);
+    try {
+      const editPost = await fetchEditPost(
+        token,
+        postID,
+        title,
+        description,
+        price,
+        location,
+        deliver
+      );
+      console.log(editPost);
+      history.goBack();
+    } catch (err) {
+      console.error('something went wrong', err);
+    }
   };
 
   const handleTitle = (e) => {
@@ -60,7 +54,6 @@ const EditPost = ({ token, postID }) => {
 
   const handleDeliver = (e) => {
     setDeliver(e.target.checked);
-    console.log(e);
   };
 
   const previousPage = () => {

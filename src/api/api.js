@@ -50,3 +50,34 @@ export const fetchAddPost = async (
   const json = res.json();
   return json;
 };
+
+// edit post
+
+export const fetchEditPost = async (
+  token,
+  postID,
+  title,
+  description,
+  price,
+  location,
+  deliver
+) => {
+  const res = await fetch(`${APIURL}/posts/${postID}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      post: {
+        title: `${title}`,
+        description: `${description}`,
+        price: `${price}`,
+        location: `${location}`,
+        willDeliver: `${deliver}`,
+      },
+    }),
+  });
+  const json = await res.json();
+  return json;
+};
