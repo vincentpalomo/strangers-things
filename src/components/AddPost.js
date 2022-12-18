@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { APIURL } from '..';
+import { fetchAddPost } from '../api/api';
 
 const AddPost = ({ token }) => {
   const [title, setTitle] = useState('');
@@ -18,28 +19,20 @@ const AddPost = ({ token }) => {
     setLocation('');
     setDeliver(false);
 
-    const res = await fetch(`${APIURL}/posts`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        post: {
-          title: `${title}`,
-          description: `${description}`,
-          price: `${price}`,
-          location: `${location}`,
-          willDeliver: `${deliver}`,
-        },
-      }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        history.goBack();
-      })
-      .catch(console.error);
+    try {
+      const createPost = await fetchAddPost(
+        token,
+        title,
+        description,
+        price,
+        location,
+        deliver
+      );
+      console.log(createPost);
+      history.goBack();
+    } catch (err) {
+      console.error('something went wrong', err);
+    }
   };
 
   const handleTitle = (e) => {
@@ -80,7 +73,7 @@ const AddPost = ({ token }) => {
           onChange={handleTitle}
           required
         />
-        <label htmlFor='description'>description</label>
+        <label htmlFor='description'>Description</label>
         <input
           type='description'
           name='description'
@@ -88,7 +81,7 @@ const AddPost = ({ token }) => {
           onChange={handleDescription}
           required
         />
-        <label htmlFor='price'>price</label>
+        <label htmlFor='price'>Price</label>
         <input
           type='text'
           name='price'
@@ -96,14 +89,14 @@ const AddPost = ({ token }) => {
           onChange={handlePrice}
           required
         />
-        <label htmlFor='location'>location</label>
+        <label htmlFor='location'>Location</label>
         <input
           type='text'
           name='location'
           value={location}
           onChange={handleLocation}
         />
-        <label htmlFor='deliver'>deliver</label>
+        <label htmlFor='deliver'>Will Deliver</label>
         <input
           type='checkbox'
           name='deliver'

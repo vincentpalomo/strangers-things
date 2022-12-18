@@ -20,3 +20,33 @@ export const fetchDeletePost = async (postID, token) => {
   const json = await res.json();
   return json;
 };
+
+// add post
+
+export const fetchAddPost = async (
+  token,
+  title,
+  description,
+  price,
+  location,
+  deliver
+) => {
+  const res = await fetch(`${APIURL}/posts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      post: {
+        title: `${title}`,
+        description: `${description}`,
+        price: `${price}`,
+        location: `${location}`,
+        willDeliver: `${deliver}`,
+      },
+    }),
+  });
+  const json = res.json();
+  return json;
+};
