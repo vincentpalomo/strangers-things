@@ -9,8 +9,7 @@ export const fetchAllPosts = async () => {
 };
 
 // delete post
-
-export const fetchDeletePost = async (postID) => {
+export const fetchDeletePost = async (postID, token) => {
   const res = await fetch(`${APIURL}/posts/${postID}`, {
     method: 'DELETE',
     headers: {
