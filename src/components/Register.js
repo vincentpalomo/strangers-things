@@ -1,40 +1,30 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { APIURL } from '..';
+import { fetchRegister } from '../api/api';
 
 const Register = ({ setToken, setOnline }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErroMessage] = useState('');
   let history = useHistory();
-
-  console.log('user', username, 'pass', password);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUsername('');
     setPassword('');
 
-    const response = await fetch(`${APIURL}/users/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        user: {
-          username: `${username}`,
-          password: `${password}`,
-        },
-      }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        setToken(result.data.token);
-        setOnline(true);
-        history.push('/account');
-        localStorage.setItem('token', result.data.token);
-      })
-      .catch(console.error);
+    try {
+      const register = await fetchRegister(username, password);
+      if (!register.success) {
+        setErroMessage(register.error.message);
+      }
+      setToken(register.data.token);
+      setOnline(true);
+      localStorage.setItem('token', register.data.token);
+      history.push('/account');
+    } catch (err) {
+      console.error('something went wrong', err);
+    }
   };
 
   const handleUsername = (e) => {
@@ -64,6 +54,7 @@ const Register = ({ setToken, setOnline }) => {
           onChange={handlePassword}
         />
         <button type='submit'>Create Account</button>
+        <p>{errorMessage}</p>
       </form>
       <Link to='/account/login'>🤔 Already a user? Sign in!</Link>
     </div>

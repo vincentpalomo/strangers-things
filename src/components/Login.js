@@ -6,6 +6,7 @@ import { fetchLogin } from '../api/api';
 const Login = ({ setToken, setOnline }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErroMessage] = useState('');
   let history = useHistory();
 
   const handleSubmit = async (e) => {
@@ -15,7 +16,9 @@ const Login = ({ setToken, setOnline }) => {
 
     try {
       const login = await fetchLogin(username, password);
-      console.log(login);
+      if (!login.success) {
+        setErroMessage(login.error.message);
+      }
       setToken(login.data.token);
       setOnline(true);
       localStorage.setItem('token', login.data.token);
@@ -23,29 +26,6 @@ const Login = ({ setToken, setOnline }) => {
     } catch (err) {
       console.error('something went wrong', err);
     }
-
-    // const response = await fetch(`${APIURL}/users/login`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     user: {
-    //       username: `${username}`,
-    //       password: `${password}`,
-    //     },
-    //   }),
-    // })
-    //   .then((response) => response.json())
-    //   .then((result) => {
-    //     console.log(result);
-    //     console.log('token:', result.data.token);
-    //     setToken(result.data.token);
-    //     setOnline(true);
-    //     history.push('/account');
-    //     localStorage.setItem('token', result.data.token);
-    //   })
-    //   .catch(console.error);
   };
 
   const handleUsername = (e) => {
@@ -75,6 +55,7 @@ const Login = ({ setToken, setOnline }) => {
           onChange={handlePassword}
         />
         <button type='submit'>Login</button>
+        <p>{errorMessage}</p>
       </form>
       <Link className='create-account' to='/account/register'>
         👋 New Account? Sign up here!

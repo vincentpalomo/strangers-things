@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { APIURL } from '..';
 import { fetchAddPost } from '../api/api';
 
 const AddPost = ({ token }) => {
@@ -28,6 +27,7 @@ const AddPost = ({ token }) => {
         location,
         deliver
       );
+      console.log(createPost);
       history.goBack();
     } catch (err) {
       console.error('something went wrong', err);
@@ -52,7 +52,6 @@ const AddPost = ({ token }) => {
 
   const handleDeliver = (e) => {
     setDeliver(e.target.checked);
-    console.log(e);
   };
 
   const previousPage = () => {

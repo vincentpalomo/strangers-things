@@ -40,7 +40,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
     }
   };
 
-  const editPost = async (postID) => {
+  const getPostID = async (postID) => {
     setPostID(postID);
   };
 
@@ -74,7 +74,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
                   <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'}</p>
                   {post.author._id === currentUserID ? (
                     <Link to='/posts/editpost'>
-                      <button onClick={() => editPost(post._id)}>Edit</button>
+                      <button onClick={() => getPostID(post._id)}>Edit</button>
                     </Link>
                   ) : null}
                   {post.author._id === currentUserID ? (
@@ -84,7 +84,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
                   ) : null}
                   {post.author._id !== currentUserID && online === true ? (
                     <Link to='/account/messages'>
-                      <button onClick={() => editPost(post._id)}>
+                      <button onClick={() => getPostID(post._id)}>
                         Message
                       </button>
                     </Link>
