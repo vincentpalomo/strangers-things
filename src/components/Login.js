@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { APIURL } from '..';
+import { fetchLogin } from '../api/api';
 
 const Login = ({ setToken, setOnline }) => {
   const [username, setUsername] = useState('');
@@ -12,28 +13,39 @@ const Login = ({ setToken, setOnline }) => {
     setUsername('');
     setPassword('');
 
-    const response = await fetch(`${APIURL}/users/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        user: {
-          username: `${username}`,
-          password: `${password}`,
-        },
-      }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        console.log('token:', result.data.token);
-        setToken(result.data.token);
-        setOnline(true);
-        history.push('/account');
-        localStorage.setItem('token', result.data.token);
-      })
-      .catch(console.error);
+    try {
+      const login = await fetchLogin(username, password);
+      console.log(login);
+      setToken(login.data.token);
+      setOnline(true);
+      localStorage.setItem('token', login.data.token);
+      history.push('/account');
+    } catch (err) {
+      console.error('something went wrong', err);
+    }
+
+    // const response = await fetch(`${APIURL}/users/login`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     user: {
+    //       username: `${username}`,
+    //       password: `${password}`,
+    //     },
+    //   }),
+    // })
+    //   .then((response) => response.json())
+    //   .then((result) => {
+    //     console.log(result);
+    //     console.log('token:', result.data.token);
+    //     setToken(result.data.token);
+    //     setOnline(true);
+    //     history.push('/account');
+    //     localStorage.setItem('token', result.data.token);
+    //   })
+    //   .catch(console.error);
   };
 
   const handleUsername = (e) => {

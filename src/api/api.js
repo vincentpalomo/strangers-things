@@ -22,7 +22,6 @@ export const fetchDeletePost = async (postID, token) => {
 };
 
 // add post
-
 export const fetchAddPost = async (
   token,
   title,
@@ -52,7 +51,6 @@ export const fetchAddPost = async (
 };
 
 // edit post
-
 export const fetchEditPost = async (
   token,
   postID,
@@ -75,6 +73,24 @@ export const fetchEditPost = async (
         price: `${price}`,
         location: `${location}`,
         willDeliver: `${deliver}`,
+      },
+    }),
+  });
+  const json = await res.json();
+  return json;
+};
+
+// login
+export const fetchLogin = async (username, password) => {
+  const res = await fetch(`${APIURL}/users/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      user: {
+        username: `${username}`,
+        password: `${password}`,
       },
     }),
   });
