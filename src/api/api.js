@@ -115,3 +115,15 @@ export const fetchRegister = async (username, password) => {
   const json = await res.json();
   return json;
 };
+
+// logged in user
+export const fetchLoggedInUser = async (token) => {
+  const res = await fetch(`${APIURL}/users/me`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const json = await res.json();
+  return json;
+};

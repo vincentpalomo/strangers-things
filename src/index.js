@@ -98,6 +98,7 @@ const App = () => {
               currentUserID={currentUserID}
               setCurrentUserID={setCurrentUserID}
               setPostID={setPostID}
+              setPostData={setPostData}
             />
           </Route>
           <Route path='/account/login'>
