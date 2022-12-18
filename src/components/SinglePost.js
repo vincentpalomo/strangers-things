@@ -5,6 +5,7 @@ import { fetchDeletePost } from '../api/api';
 const SinglePost = ({ token, postData, setPostID, currentUserID, online }) => {
   let post = postData;
   let history = useHistory();
+  console.log(post);
 
   const deletePost = async (postID, token) => {
     try {
@@ -48,6 +49,16 @@ const SinglePost = ({ token, postData, setPostID, currentUserID, online }) => {
           </Link>
         ) : null}
         <button onClick={previousPage}>Go back</button>
+      </div>
+      <div>
+        <h1>Messages:</h1>
+        {post.messages.map((messages, i) => {
+          return (
+            <div className='messages' key={i}>
+              <h3>Messages</h3>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
