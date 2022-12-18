@@ -29,7 +29,6 @@ const EditPost = ({ token, postID }) => {
         location,
         deliver
       );
-      console.log(editPost);
       history.goBack();
     } catch (err) {
       console.error('something went wrong', err);

@@ -6,7 +6,6 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    // console.log('useeffect ran');
     if (currentUserID === '') {
       return;
     }
@@ -24,7 +23,6 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
     try {
       const post = await fetchAllPosts();
       setPosts(post);
-      // console.log(post);
     } catch (error) {
       console.error(error);
     }
@@ -33,7 +31,6 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
   const deletePost = async (postID, token) => {
     try {
       const deletePost = await fetchDeletePost(postID, token);
-      console.log(deletePost);
       if (!deletePost.success) {
         alert(deletePost.error.message);
       }
@@ -74,7 +71,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
                   <p>Price: {post.price}</p>
                   <p>Seller: {post.author.username}</p>
                   <p>Location: {post.location}</p>
-                  <p>Will Deliver: {post.willDeliver ? 'yes' : 'no'}</p>
+                  <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'}</p>
                   {post.author._id === currentUserID ? (
                     <Link to='/posts/editpost'>
                       <button onClick={() => editPost(post._id)}>Edit</button>

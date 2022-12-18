@@ -28,7 +28,6 @@ const AddPost = ({ token }) => {
         location,
         deliver
       );
-      console.log(createPost);
       history.goBack();
     } catch (err) {
       console.error('something went wrong', err);
