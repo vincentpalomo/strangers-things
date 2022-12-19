@@ -33,8 +33,14 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
   const searchPost = async (searchQuery, posts) => {
     console.log(searchQuery, posts);
     try {
-      const searchPost = await fetchAllPosts(searchQuery);
-      console.log(searchPost);
+      const searchPost = await fetchAllPosts();
+      console.log(searchPost[0]);
+      const filter = searchPost.filter(
+        (post) =>
+          post.title.includes(searchQuery) ||
+          post.description.includes(searchQuery)
+      );
+      setPosts(filter);
     } catch (err) {
       console.error('something went wrong', err);
     }
