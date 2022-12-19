@@ -13,6 +13,7 @@ import {
   Messages,
   Nav,
 } from './components';
+import styles from './components/globalstyles.css';
 
 export const APIURL =
   'https://strangers-things.herokuapp.com/api/2209-FTB-CT-WEB-PT';
@@ -23,13 +24,9 @@ const App = () => {
   const [currentUserID, setCurrentUserID] = useState('');
   const [postID, setPostID] = useState('');
   const [postData, setPostData] = useState();
-  // console.log('is online? ', online);
-  // console.log('token from app:', token);
-  // console.log(currentUserID);
 
   useEffect(() => {
     const data = localStorage.getItem('token', token);
-    // console.log('token from localStorage:', data);
     const userID = localStorage.getItem('userID', currentUserID);
     setToken(data);
     setCurrentUserID(userID);
@@ -43,11 +40,13 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className='container'>
-        <Nav
-          online={online}
-          setOnline={setOnline}
-          setCurrentUserID={setCurrentUserID}
-        />
+        <header>
+          <Nav
+            online={online}
+            setOnline={setOnline}
+            setCurrentUserID={setCurrentUserID}
+          />
+        </header>
       </div>
       <div className='app'>
         <Route exact path='/'>
@@ -108,6 +107,13 @@ const App = () => {
             <Register setToken={setToken} setOnline={setOnline} />
           </Route>
         </Switch>
+        <footer>
+          <div className='relative h-32 w-32'>
+            <p className='absolute inset-x-0 bottom-0 h-16'>
+              Stranger's Things Copyright 2022
+            </p>
+          </div>
+        </footer>
       </div>
     </BrowserRouter>
   );

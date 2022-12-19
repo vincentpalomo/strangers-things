@@ -12,31 +12,36 @@ const Nav = ({ online, setOnline, setCurrentUserID }) => {
   };
 
   return (
-    <div className='navbar'>
-      <Link to='/'>
-        <h1 className='title'>Stranger's Things</h1>
-      </Link>
-      <Link className='navlinks' to='/'>
-        Home
-      </Link>
-      <Link className='navlinks' to='/posts'>
-        Posts
-      </Link>
-      {online === true ? (
-        <Link className='navlinks' to='/account'>
-          Profile
-        </Link>
-      ) : (
-        <Link className='navlinks' to='/account/login'>
-          Login
-        </Link>
-      )}
-      {online === true && (
-        <Link className='navlinks' to='/' onClick={logout}>
-          Logout
-          {/* <button className='navlinks'>Logout</button> */}
-        </Link>
-      )}
+    <div className='relative container mx-auto p-6'>
+      <div className='flex items-center justify-between'>
+        <div className='pt-2 font-bold'>
+          <Link to='/'>
+            <h1 className='title'>Stranger's Things👥</h1>
+          </Link>
+        </div>
+        <div className='flex space-x-6'>
+          <Link className='hover:text-slate-600' to='/'>
+            Home
+          </Link>
+          <Link className='hover:text-slate-600' to='/posts'>
+            Posts
+          </Link>
+          {online === true ? (
+            <Link className='hover:text-slate-600' to='/account'>
+              Profile
+            </Link>
+          ) : (
+            <Link className='hover:text-slate-600' to='/account/login'>
+              Login
+            </Link>
+          )}
+          {online === true && (
+            <Link className='hover:text-slate-600' to='/' onClick={logout}>
+              Logout
+            </Link>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

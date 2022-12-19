@@ -58,7 +58,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
           </Link>
         ) : null}
       </div>
-      <div className='post-map'>
+      <div className='grid gap-4 grid-cols-3 grid-rows-3'>
         {posts.map((post) => {
           return (
             <div className='posts' key={post._id}>
