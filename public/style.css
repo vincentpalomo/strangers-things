@@ -142,7 +142,7 @@ a {
   padding: 1rem;
 }
 
-button {
+/* button {
   padding: 1em 2em;
   background-color: #59a9c2;
   color: white;
@@ -155,7 +155,7 @@ button {
 
 button:hover {
   background-color: #65878f;
-}
+} */
 
 form {
   display: flex;
@@ -170,7 +170,7 @@ form input {
   font-size: 1em;
 }
 
-form button {
+/* form button {
   padding: 1em 2em;
   background-color: #59a9c2;
   color: white;
@@ -183,4 +183,4 @@ form button {
 
 form button:hover {
   background-color: #65878f;
-}
+} */
