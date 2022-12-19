@@ -4,6 +4,8 @@ import { fetchAllPosts, fetchDeletePost } from '../api/api';
 
 const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
   const [posts, setPosts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  console.log(searchQuery);
 
   useEffect(() => {
     if (currentUserID === '') {
@@ -18,6 +20,25 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
     }
     fetchPosts();
   }, [token]);
+
+  useEffect(() => {
+    if (searchQuery === '') {
+      return;
+    }
+    searchPost(searchQuery);
+  }, [searchQuery]);
+
+  // let searchPost render the page again with updating the post array
+
+  const searchPost = async (searchQuery, posts) => {
+    console.log(searchQuery, posts);
+    try {
+      const searchPost = await fetchAllPosts(searchQuery);
+      console.log(searchPost);
+    } catch (err) {
+      console.error('something went wrong', err);
+    }
+  };
 
   const fetchPosts = async () => {
     try {
@@ -57,6 +78,20 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
             <button className='btn'>Create Post</button>
           </Link>
         ) : null}
+        <form
+          id='search'
+          onSubmit={async (e) => {
+            e.preventDefault();
+            await searchPost(searchQuery, posts);
+          }}
+        >
+          <input
+            type='text'
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button type='submit'>Search</button>
+        </form>
       </div>
       <div className='grid gap-4 grid-cols-3 grid-rows-3'>
         {posts.map((post) => {
