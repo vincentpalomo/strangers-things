@@ -5,7 +5,6 @@ import { fetchAllPosts, fetchDeletePost } from '../api/api';
 const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
   const [posts, setPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  console.log(searchQuery);
 
   useEffect(() => {
     if (currentUserID === '') {
@@ -21,26 +20,20 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
     fetchPosts();
   }, [token]);
 
-  useEffect(() => {
-    if (searchQuery === '') {
-      return;
-    }
-    searchPost(searchQuery);
-  }, [searchQuery]);
-
   // let searchPost render the page again with updating the post array
 
   const searchPost = async (searchQuery, posts) => {
-    console.log(searchQuery, posts);
     try {
       const searchPost = await fetchAllPosts();
-      console.log(searchPost[0]);
       const filter = searchPost.filter(
         (post) =>
           post.title.includes(searchQuery) ||
           post.description.includes(searchQuery)
       );
       setPosts(filter);
+      if (searchQuery === '') {
+        fetchPosts();
+      }
     } catch (err) {
       console.error('something went wrong', err);
     }
