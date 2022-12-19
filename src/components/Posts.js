@@ -20,6 +20,14 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
     fetchPosts();
   }, [token]);
 
+  useEffect(() => {
+    if (searchQuery < 2) {
+      fetchPosts();
+    } else {
+      searchPost(searchQuery);
+    }
+  }, [searchQuery]);
+
   // let searchPost render the page again with updating the post array
 
   const searchPost = async (searchQuery, posts) => {
@@ -27,8 +35,8 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
       const searchPost = await fetchAllPosts();
       const filter = searchPost.filter(
         (post) =>
-          post.title.includes(searchQuery) ||
-          post.description.includes(searchQuery)
+          post.title.toLowerCase().includes(searchQuery) ||
+          post.description.toLowerCase().includes(searchQuery)
       );
       setPosts(filter);
       if (searchQuery === '') {
