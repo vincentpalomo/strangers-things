@@ -30,13 +30,14 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
 
   // let searchPost render the page again with updating the post array
 
-  const searchPost = async (searchQuery, posts) => {
+  const searchPost = async (searchQuery) => {
     try {
       const searchPost = await fetchAllPosts();
       const filter = searchPost.filter(
         (post) =>
           post.title.toLowerCase().includes(searchQuery) ||
-          post.description.toLowerCase().includes(searchQuery)
+          post.description.toLowerCase().includes(searchQuery) ||
+          post.price.toLowerCase().includes(searchQuery)
       );
       setPosts(filter);
       if (searchQuery === '') {
@@ -89,7 +90,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
           id='search'
           onSubmit={async (e) => {
             e.preventDefault();
-            await searchPost(searchQuery, posts);
+            await searchPost(searchQuery);
           }}
         >
           <input
