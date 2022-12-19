@@ -3,10 +3,10 @@
 }
 
 body {
-  background-color: papayawhip;
+  background-color: slategrey;
 }
 
-.navbar {
+/* .navbar {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   justify-content: center;
@@ -17,16 +17,16 @@ body {
   color: palevioletred;
   padding: 0.5rem;
   /* width: 100%;
-  position: absolute; */
-}
+  position: absolute; 
+ } */
 
-.title,
+/* .title,
 h1,
 a {
   color: palevioletred;
   text-decoration: none;
-}
-
+} */
+/* 
 .home {
   display: flex;
   flex-direction: column;
@@ -43,9 +43,9 @@ a {
   text-align: center;
   transition: all 1s ease;
   width: 155px;
-}
+} */
 
-.navlinks:hover {
+/* .navlinks:hover {
   background-color: rgb(74, 37, 112);
   border-radius: 3px;
 }
@@ -62,9 +62,9 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.singlepost-container {
+/* .singlepost-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,9 +84,9 @@ a {
 
 .posts:empty {
   display: none;
-}
+} */
 
-.messages {
+/* .messages {
   background-color: cornflowerblue;
   margin: 1rem;
   padding: 1rem;
@@ -104,8 +104,8 @@ a {
   justify-content: center;
   margin: 1rem;
   padding: 1rem;
-}
-
+} */
+/* 
 .register-container {
   display: flex;
   flex-direction: column;
@@ -122,9 +122,9 @@ a {
   justify-content: center;
   margin: 1rem;
   padding: 1rem;
-}
+} */
 
-.editpost-container {
+/* .editpost-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -140,7 +140,7 @@ a {
   align-items: center;
   margin: 1rem;
   padding: 1rem;
-}
+} */
 
 /* button {
   padding: 1em 2em;
@@ -157,7 +157,7 @@ button:hover {
   background-color: #65878f;
 } */
 
-form {
+/* form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -168,7 +168,7 @@ form {
 form input {
   margin: 1em 0;
   font-size: 1em;
-}
+} */
 
 /* form button {
   padding: 1em 2em;
