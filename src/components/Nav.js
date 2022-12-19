@@ -19,7 +19,7 @@ const Nav = ({ online, setOnline, setCurrentUserID }) => {
             <h1 className='title'>Stranger's Things👥</h1>
           </Link>
         </div>
-        <div className='flex space-x-6'>
+        <div className='flex space-x-12'>
           <Link className='hover:text-slate-600' to='/'>
             Home
           </Link>
