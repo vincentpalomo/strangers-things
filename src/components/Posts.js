@@ -79,11 +79,13 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
 
   return (
     <div className='posts-container'>
-      <div>
-        <h1>POSTS</h1>
+      <div className='flex justify-evenly p-3'>
+        <h1 className='text-2xl text-white font-bold m-2'>POSTS</h1>
         {online === true ? (
           <Link to='/posts/addpost'>
-            <button className='btn'>Create Post</button>
+            <button className='bg-slate-800 text-white p-2 m-2 rounded'>
+              Create Post
+            </button>
           </Link>
         ) : null}
         <form
@@ -94,44 +96,65 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
           }}
         >
           <input
+            className='p-2 rounded'
             type='text'
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button type='submit'>Search</button>
+          <button
+            className='bg-slate-800 text-white p-2 m-2 rounded'
+            type='submit'
+          >
+            Search
+          </button>
         </form>
       </div>
-      <div className='grid gap-4 grid-cols-3 grid-rows-3'>
+      <div className='grid gap-4 grid-cols-3 grid-rows-3 p-3'>
         {posts.map((post) => {
           return (
-            <div className='border' key={post._id}>
+            <div className=' bg-slate-800 rounded-2xl' key={post._id}>
               {post.active ? (
-                <div>
+                <div className='text-white justify-center m-3'>
                   <Link to={`/posts/singlepost`} onClick={() => sendPost(post)}>
-                    <h3>{post.title}</h3>
+                    <h3 className='bg-white text-slate-800 rounded text-center h-15 text'>
+                      {post.title}
+                    </h3>
                   </Link>
                   <p>{post.description}</p>
                   <p>Price: {post.price}</p>
                   <p>Seller: {post.author.username}</p>
                   <p>Location: {post.location}</p>
                   <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'}</p>
-                  {post.author._id === currentUserID ? (
-                    <Link to='/posts/editpost'>
-                      <button onClick={() => getPostID(post._id)}>Edit</button>
-                    </Link>
-                  ) : null}
-                  {post.author._id === currentUserID ? (
-                    <button onClick={() => deletePost(post._id, token)}>
-                      Delete
-                    </button>
-                  ) : null}
-                  {post.author._id !== currentUserID && online === true ? (
-                    <Link to='/account/messages'>
-                      <button onClick={() => getPostID(post._id)}>
-                        Message
+                  <div>
+                    {post.author._id === currentUserID ? (
+                      <Link to='/posts/editpost'>
+                        <button
+                          className='bg-slate-100 text-slate-800 p-2 m-2 rounded'
+                          onClick={() => getPostID(post._id)}
+                        >
+                          Edit
+                        </button>
+                      </Link>
+                    ) : null}
+                    {post.author._id === currentUserID ? (
+                      <button
+                        className='bg-slate-100 text-slate-800 p-2 m-2 rounded'
+                        onClick={() => deletePost(post._id, token)}
+                      >
+                        Delete
                       </button>
-                    </Link>
-                  ) : null}
+                    ) : null}
+                    {post.author._id !== currentUserID && online === true ? (
+                      <Link to='/account/messages'>
+                        <button
+                          className='bg-slate-100 text-slate-800 p-2 m-2 rounded'
+                          onClick={() => getPostID(post._id)}
+                        >
+                          Message
+                        </button>
+                      </Link>
+                    ) : null}
+                  </div>
                 </div>
               ) : null}
             </div>

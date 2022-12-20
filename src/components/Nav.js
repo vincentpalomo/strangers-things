@@ -16,31 +16,29 @@ const Nav = ({ online, setOnline, setCurrentUserID }) => {
       <div className='flex items-center justify-between'>
         <div className='pt-2 font-bold'>
           <Link to='/'>
-            <h1 className='title'>Stranger's Things👥</h1>
+            <h1 className='font-extrabold text-2xl'>Stranger's Things👥</h1>
           </Link>
         </div>
-        <div className='flex space-x-12'>
-          <Link className='hover:text-slate-600' to='/'>
-            Home
+        <Link className='hover:text-slate-100' to='/'>
+          Home
+        </Link>
+        <Link className='hover:text-slate-100' to='/posts'>
+          Posts
+        </Link>
+        {online === true ? (
+          <Link className='hover:text-slate-100' to='/account'>
+            Profile
           </Link>
-          <Link className='hover:text-slate-600' to='/posts'>
-            Posts
+        ) : (
+          <Link className='hover:text-slate-100' to='/account/login'>
+            Login
           </Link>
-          {online === true ? (
-            <Link className='hover:text-slate-600' to='/account'>
-              Profile
-            </Link>
-          ) : (
-            <Link className='hover:text-slate-600' to='/account/login'>
-              Login
-            </Link>
-          )}
-          {online === true && (
-            <Link className='hover:text-slate-600' to='/' onClick={logout}>
-              Logout
-            </Link>
-          )}
-        </div>
+        )}
+        {online === true && (
+          <Link className='hover:text-slate-100' to='/' onClick={logout}>
+            Logout
+          </Link>
+        )}
       </div>
     </div>
   );

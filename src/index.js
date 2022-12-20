@@ -39,82 +39,80 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className='container'>
-        <div className='app'>
-          <header className='bg-slate-800'>
-            <Nav
+      <div className='flex flex-col h-screen justify-between'>
+        {/* header */}
+        <header className='bg-slate-700'>
+          <Nav
+            online={online}
+            setOnline={setOnline}
+            setCurrentUserID={setCurrentUserID}
+          />
+        </header>
+        {/* body */}
+        <section className='mb-auto flex-grow overflow-y-auto'>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route exact path='/posts'>
+            <Posts
+              token={token}
+              currentUserID={currentUserID}
               online={online}
-              setOnline={setOnline}
-              setCurrentUserID={setCurrentUserID}
+              setPostID={setPostID}
+              setPostData={setPostData}
             />
-          </header>
-          <section>
-            <Route exact path='/'>
-              <Home />
-            </Route>
-            <Route exact path='/posts'>
-              <Posts
+          </Route>
+          <Route path='/posts/addpost'>
+            <AddPost token={token} />
+          </Route>
+          <Route path='/posts/editpost'>
+            <EditPost
+              token={token}
+              currentUserID={currentUserID}
+              postID={postID}
+            />
+          </Route>
+          <Route path='/posts/singlepost'>
+            <SinglePost
+              token={token}
+              currentUserID={currentUserID}
+              online={online}
+              setPostID={setPostID}
+              setPostData={setPostData}
+              postID={postID}
+              postData={postData}
+            />
+          </Route>
+          <Route path='/account/messages'>
+            <Messages
+              token={token}
+              currentUserID={currentUserID}
+              postID={postID}
+            />
+          </Route>
+          <Switch>
+            <Route exact path='/account'>
+              <Profile
                 token={token}
+                setOnline={setOnline}
                 currentUserID={currentUserID}
-                online={online}
+                setCurrentUserID={setCurrentUserID}
                 setPostID={setPostID}
                 setPostData={setPostData}
               />
             </Route>
-            <Route path='/posts/addpost'>
-              <AddPost token={token} />
+            <Route path='/account/login'>
+              <Login setToken={setToken} setOnline={setOnline} />
             </Route>
-            <Route path='/posts/editpost'>
-              <EditPost
-                token={token}
-                currentUserID={currentUserID}
-                postID={postID}
-              />
+            <Route path='/account/register'>
+              <Register setToken={setToken} setOnline={setOnline} />
             </Route>
-            <Route path='/posts/singlepost'>
-              <SinglePost
-                token={token}
-                currentUserID={currentUserID}
-                online={online}
-                setPostID={setPostID}
-                setPostData={setPostData}
-                postID={postID}
-                postData={postData}
-              />
-            </Route>
-            <Route path='/account/messages'>
-              <Messages
-                token={token}
-                currentUserID={currentUserID}
-                postID={postID}
-              />
-            </Route>
-            <Switch>
-              <Route exact path='/account'>
-                <Profile
-                  token={token}
-                  setOnline={setOnline}
-                  currentUserID={currentUserID}
-                  setCurrentUserID={setCurrentUserID}
-                  setPostID={setPostID}
-                  setPostData={setPostData}
-                />
-              </Route>
-              <Route path='/account/login'>
-                <Login setToken={setToken} setOnline={setOnline} />
-              </Route>
-              <Route path='/account/register'>
-                <Register setToken={setToken} setOnline={setOnline} />
-              </Route>
-            </Switch>
-          </section>
-        </div>
-
-        <footer className='grid'>
-          <div className='relative h-32 w-32'>
-            <p className='absolute inset-x-0 bottom-0 h-16 self-center justify-self-center'>
-              Stranger's Things Copyright 2022
-            </p>
+          </Switch>
+        </section>
+        {/* footer */}
+        <footer className='bg-slate-700 h-15'>
+          <div className='flex justify-center container relative mx-auto p-6 text-lg text-white'>
+            Stranger's Things Copyright 2022
           </div>
         </footer>
       </div>
