@@ -59,7 +59,7 @@ const AddPost = ({ token }) => {
   };
 
   return (
-    <div className='flex justify-center items-center'>
+    <div className='flex justify-center items-center p-12'>
       <div className='flex flex-col'>
         <h1 className='text-2xl text-white font-bold m-2'>Create Post 📃</h1>
         <button className='btn' onClick={previousPage}>
@@ -74,7 +74,6 @@ const AddPost = ({ token }) => {
               >
                 Title:
               </label>
-
               <div className='md:w-2/3'>
                 <input
                   className='input input-bordered'
@@ -147,15 +146,12 @@ const AddPost = ({ token }) => {
             </div>
           </div>
           <div className='md:flex md:items-center mb-1'>
-            <div className='md:w-1/3'>
+            <div className='mb-5'>
               <label
                 className='block font-bold md:text-right mb-1 md:mb-0 pr-4'
                 htmlFor='deliver'
               >
-                Deliver:
-              </label>
-              <div className='md:w-2/3 content-center'>
-                <span class='text-center'>Check for Yes</span>
+                <span>Will Deliver:</span>
                 <input
                   className='checkbox checkbox-success'
                   type='checkbox'
@@ -163,7 +159,7 @@ const AddPost = ({ token }) => {
                   checked={deliver}
                   onChange={handleDeliver}
                 />
-              </div>
+              </label>
             </div>
           </div>
           <button className='btn md:w-full' type='submit'>

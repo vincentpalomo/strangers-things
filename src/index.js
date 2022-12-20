@@ -12,6 +12,7 @@ import {
   SinglePost,
   Messages,
   Nav,
+  FormTemplate,
 } from './components';
 import styles from './components/globalstyles.css';
 
@@ -52,6 +53,9 @@ const App = () => {
         <section className='mb-auto flex-grow overflow-y-auto'>
           <Route exact path='/'>
             <Home />
+          </Route>
+          <Route path='/form'>
+            <FormTemplate />
           </Route>
           <Route exact path='/posts'>
             <Posts

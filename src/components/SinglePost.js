@@ -74,7 +74,7 @@ const SinglePost = ({ token, postData, setPostID, currentUserID, online }) => {
             Go back
           </button>
         </div>
-        {online === true ? (
+        {online === true && post.messages.length > 0 ? (
           <div className='bg-slate-800 rounded p-3 text-white'>
             <h1>Messages:</h1>
             {post.messages.map((message, i) => {

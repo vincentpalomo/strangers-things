@@ -51,8 +51,9 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
     }
   };
 
-  const getPostID = async (postID) => {
+  const getPostID = async (postID, post) => {
     setPostID(postID);
+    setPostData(post);
   };
 
   const sendPost = async (post) => {
@@ -114,7 +115,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
                       <Link to='/posts/editpost'>
                         <button
                           className='bg-slate-100 text-slate-800 p-2 m-2 rounded'
-                          onClick={() => getPostID(post._id)}
+                          onClick={() => getPostID(post._id, post)}
                         >
                           Edit
                         </button>

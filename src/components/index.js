@@ -8,3 +8,4 @@ export { default as EditPost } from './EditPost';
 export { default as SinglePost } from './SinglePost';
 export { default as Messages } from './Messages';
 export { default as Nav } from './Nav';
+export { default as FormTemplate } from './FormTemplate';
