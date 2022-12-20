@@ -37,29 +37,31 @@ const Login = ({ setToken, setOnline }) => {
   };
 
   return (
-    <div className='login-container'>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='username'>Username</label>
-        <input
-          type='text'
-          name='usename'
-          value={username}
-          onChange={handleUsername}
-        />
-        <label htmlFor='password'>Password</label>
-        <input
-          type='password'
-          name='password'
-          value={password}
-          onChange={handlePassword}
-        />
-        <button type='submit'>Login</button>
-        <p>{errorMessage}</p>
-      </form>
-      <Link className='create-account' to='/account/register'>
-        👋 New Account? Sign up here!
-      </Link>
+    <div className='flex justify-center items-center h-full'>
+      <div className='flex flex-col space-y-12'>
+        <h1 className='text-2xl text-white font-bold m-2'>Login</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor='username'>Username</label>
+          <input
+            type='text'
+            name='usename'
+            value={username}
+            onChange={handleUsername}
+          />
+          <label htmlFor='password'>Password</label>
+          <input
+            type='password'
+            name='password'
+            value={password}
+            onChange={handlePassword}
+          />
+          <button type='submit'>Login</button>
+          <p>{errorMessage}</p>
+        </form>
+        <Link className='text-center' to='/account/register'>
+          👋 New Account? Sign up here!
+        </Link>
+      </div>
     </div>
   );
 };

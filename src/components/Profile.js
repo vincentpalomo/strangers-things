@@ -91,7 +91,7 @@ const Profile = ({
           </div>
 
           <div>
-            <h1>My Posts:</h1>
+            <h1 className='text-2xl text-white font-bold m-2'>My Posts:</h1>
             {userData.posts.map((post, i) => {
               return (
                 <div className='bg-slate-800 rounded' key={i}>
@@ -132,7 +132,7 @@ const Profile = ({
             })}
           </div>
           <div>
-            <h1>Messages:</h1>
+            <h1 className='text-2xl text-white font-bold m-2'>Messages:</h1>
             {userData.messages.map((message, i) => {
               return (
                 <div className='bg-slate-800 rounded' key={i}>
