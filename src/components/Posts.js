@@ -20,32 +20,15 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
     fetchPosts();
   }, [token]);
 
-  useEffect(() => {
-    if (searchQuery < 2) {
-      fetchPosts();
-    } else {
-      searchPost(searchQuery);
-    }
-  }, [searchQuery]);
-
   // let searchPost render the page again with updating the post array
 
-  const searchPost = async (searchQuery) => {
-    try {
-      const searchPost = await fetchAllPosts();
-      const filter = searchPost.filter(
-        (post) =>
-          post.title.toLowerCase().includes(searchQuery) ||
-          post.description.toLowerCase().includes(searchQuery) ||
-          post.price.toLowerCase().includes(searchQuery)
-      );
-      setPosts(filter);
-      if (searchQuery === '') {
-        fetchPosts();
-      }
-    } catch (err) {
-      console.error('something went wrong', err);
-    }
+  const searchPost = (post) => {
+    console.log(post);
+    return (
+      post.title.toLowerCase().includes(searchQuery) ||
+      post.description.toLowerCase().includes(searchQuery) ||
+      post.price.toLowerCase().includes(searchQuery)
+    );
   };
 
   const fetchPosts = async () => {
@@ -110,7 +93,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
         </form>
       </div>
       <div className='grid gap-4 grid-cols-3 grid-rows-3 p-3'>
-        {posts.map((post) => {
+        {posts.filter(searchPost).map((post) => {
           return (
             <div className=' bg-slate-800 rounded' key={post._id}>
               {post.active ? (
