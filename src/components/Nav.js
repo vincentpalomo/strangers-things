@@ -19,23 +19,27 @@ const Nav = ({ online, setOnline, setCurrentUserID }) => {
             <h1 className='font-extrabold text-2xl'>Stranger's Things👥</h1>
           </Link>
         </div>
-        <Link className='hover:text-slate-100' to='/'>
+        <Link className='hover:text-slate-100 text-xl' to='/'>
           Home
         </Link>
-        <Link className='hover:text-slate-100' to='/posts'>
+        <Link className='hover:text-slate-100 text-xl' to='/posts'>
           Posts
         </Link>
         {online === true ? (
-          <Link className='hover:text-slate-100' to='/account'>
+          <Link className='hover:text-slate-100 text-xl' to='/account'>
             Profile
           </Link>
         ) : (
-          <Link className='hover:text-slate-100' to='/account/login'>
+          <Link className='hover:text-slate-100 text-xl' to='/account/login'>
             Login
           </Link>
         )}
         {online === true && (
-          <Link className='hover:text-slate-100' to='/' onClick={logout}>
+          <Link
+            className='hover:text-slate-100 text-xl'
+            to='/'
+            onClick={logout}
+          >
             Logout
           </Link>
         )}

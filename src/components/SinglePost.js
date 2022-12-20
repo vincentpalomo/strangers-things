@@ -27,7 +27,7 @@ const SinglePost = ({ token, postData, setPostID, currentUserID, online }) => {
   };
   return (
     <div className='flex justify-center items-center'>
-      <div className='flex flex-col pt-20'>
+      <div className='flex flex-col pt-20 w-1/2 text-left'>
         <div className='bg-slate-800 rounded p-3 text-slate-100'>
           <h3 className='bg-white text-slate-800 rounded text-center h-15 p-2 font-bold'>
             {post.title}
@@ -74,21 +74,23 @@ const SinglePost = ({ token, postData, setPostID, currentUserID, online }) => {
             Go back
           </button>
         </div>
-        <div className='bg-slate-800 rounded p-3 text-white'>
-          <h1>Messages:</h1>
-          {post.messages.map((message, i) => {
-            return (
-              <div className='messages' key={i}>
-                <h3 className='bg-white text-slate-800 rounded text-center h-15 p-2 font-bold'>
-                  Message from: {message.fromUser.username}
-                </h3>
-                <div className='p-1'>
-                  <p>Content: {message.content}</p>
+        {online === true ? (
+          <div className='bg-slate-800 rounded p-3 text-white'>
+            <h1>Messages:</h1>
+            {post.messages.map((message, i) => {
+              return (
+                <div className='messages' key={i}>
+                  <h3 className='bg-white text-slate-800 rounded text-center h-15 p-2 font-bold'>
+                    Message from: {message.fromUser.username}
+                  </h3>
+                  <div className='p-1'>
+                    <p>Content: {message.content}</p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        ) : null}
       </div>
     </div>
   );

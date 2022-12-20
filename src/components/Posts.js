@@ -103,11 +103,11 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
                     </h3>
                   </Link>
                   <div className='p-1'>
-                    <p>{post.description}</p>
+                    {/* <p>{post.description}</p> */}
                     <p>Price: {post.price}</p>
-                    <p>Seller: {post.author.username}</p>
+                    {/* <p>Seller: {post.author.username}</p>
                     <p>Location: {post.location}</p>
-                    <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'}</p>
+                    <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'}</p> */}
                   </div>
                   <div>
                     {post.author._id === currentUserID ? (

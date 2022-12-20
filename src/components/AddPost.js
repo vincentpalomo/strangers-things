@@ -59,50 +59,118 @@ const AddPost = ({ token }) => {
   };
 
   return (
-    <div className='addpost-container'>
-      <h1>Create Post 📃</h1>
-      <button onClick={previousPage}>Go back</button>
-      <form onSubmit={createPost}>
-        <label htmlFor='title'>Title</label>
-        <input
-          type='text'
-          name='title'
-          value={title}
-          onChange={handleTitle}
-          required
-        />
-        <label htmlFor='description'>Description</label>
-        <input
-          type='description'
-          name='description'
-          value={description}
-          onChange={handleDescription}
-          required
-        />
-        <label htmlFor='price'>Price</label>
-        <input
-          type='text'
-          name='price'
-          value={price}
-          onChange={handlePrice}
-          required
-        />
-        <label htmlFor='location'>Location</label>
-        <input
-          type='text'
-          name='location'
-          value={location}
-          onChange={handleLocation}
-        />
-        <label htmlFor='deliver'>Will Deliver</label>
-        <input
-          type='checkbox'
-          name='deliver'
-          checked={deliver}
-          onChange={handleDeliver}
-        />
-        <button type='submit'>Add Post</button>
-      </form>
+    <div className='flex justify-center items-center'>
+      <div className='flex flex-col'>
+        <h1 className='text-2xl text-white font-bold m-2'>Create Post 📃</h1>
+        <button className='btn' onClick={previousPage}>
+          Go back
+        </button>
+        <form className='w-full max-w-sm' onSubmit={createPost}>
+          <div className='md:flex md:items-center mb-1'>
+            <div className='md:w-1/3'>
+              <label
+                className='block font-bold mt-1 md:text-right mb-1 md:mb-0 pr-4'
+                htmlFor='title'
+              >
+                Title:
+              </label>
+
+              <div className='md:w-2/3'>
+                <input
+                  className='input input-bordered'
+                  type='text'
+                  name='title'
+                  value={title}
+                  onChange={handleTitle}
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div className='md:flex md:items-center mb-1'>
+            <div className='md:w-1/3'>
+              <label
+                className='block font-bold md:text-right mb-1 md:mb-0 pr-4'
+                htmlFor='description'
+              >
+                Description:
+              </label>
+              <div className='md:w-2/3'>
+                <input
+                  className='input input-bordered'
+                  type='description'
+                  name='description'
+                  value={description}
+                  onChange={handleDescription}
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div className='md:flex md:items-center mb-1'>
+            <div className='md:w-1/3'>
+              <label
+                className='block font-bold md:text-right mb-1 md:mb-0 pr-4'
+                htmlFor='price'
+              >
+                Price:
+              </label>
+              <div className='md:w-2/3'>
+                <input
+                  className='input input-bordered'
+                  type='text'
+                  name='price'
+                  value={price}
+                  onChange={handlePrice}
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div className='md:flex md:items-center mb-1'>
+            <div className='md:w-1/3'>
+              <label
+                className='block font-bold md:text-right mb-1 md:mb-0 pr-4'
+                htmlFor='location'
+              >
+                Location:
+              </label>
+              <div className='md:w-2/3'>
+                <input
+                  className='input input-bordered'
+                  type='text'
+                  name='location'
+                  value={location}
+                  onChange={handleLocation}
+                />
+              </div>
+            </div>
+          </div>
+          <div className='md:flex md:items-center mb-1'>
+            <div className='md:w-1/3'>
+              <label
+                className='block font-bold md:text-right mb-1 md:mb-0 pr-4'
+                htmlFor='deliver'
+              >
+                Deliver:
+              </label>
+              <div className='md:w-2/3 content-center'>
+                <span class='text-center'>Check for Yes</span>
+                <input
+                  className='checkbox checkbox-success'
+                  type='checkbox'
+                  name='deliver'
+                  checked={deliver}
+                  onChange={handleDeliver}
+                />
+              </div>
+            </div>
+          </div>
+          <button className='btn md:w-full' type='submit'>
+            Add Post
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

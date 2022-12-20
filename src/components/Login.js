@@ -41,24 +41,35 @@ const Login = ({ setToken, setOnline }) => {
       <div className='flex flex-col space-y-12'>
         <h1 className='text-2xl text-white font-bold m-2'>Login</h1>
         <form onSubmit={handleSubmit}>
-          <label htmlFor='username'>Username</label>
+          <label className='p-1 font-bold' htmlFor='username'>
+            Username:
+          </label>
           <input
+            className='p-2 rounded'
             type='text'
             name='usename'
             value={username}
             onChange={handleUsername}
           />
-          <label htmlFor='password'>Password</label>
+          <label className='p-1 font-bold' htmlFor='password'>
+            Password:
+          </label>
           <input
+            className='p-2 rounded'
             type='password'
             name='password'
             value={password}
             onChange={handlePassword}
           />
-          <button type='submit'>Login</button>
-          <p>{errorMessage}</p>
+          <button
+            className='bg-slate-800 text-slate-100 p-2 m-2 rounded font-bold'
+            type='submit'
+          >
+            Login
+          </button>
+          <p className='text-red-600 font-bold text-center'>{errorMessage}</p>
         </form>
-        <Link className='text-center' to='/account/register'>
+        <Link className='font-bold text-center' to='/account/register'>
           👋 New Account? Sign up here!
         </Link>
       </div>
