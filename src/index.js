@@ -70,6 +70,7 @@ const App = () => {
               token={token}
               currentUserID={currentUserID}
               postID={postID}
+              postData={postData}
             />
           </Route>
           <Route path='/posts/singlepost'>

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { APIURL } from '..';
 import { fetchEditPost } from '../api/api';
 
-const EditPost = ({ token, postID }) => {
+const EditPost = ({ token, postID, postData }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [location, setLocation] = useState('');
   const [deliver, setDeliver] = useState(false);
   let history = useHistory();
+  console.log(postData);
 
   const editPost = async (e) => {
     e.preventDefault();
