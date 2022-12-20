@@ -104,7 +104,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
       <div className='grid gap-4 grid-cols-3 grid-rows-3'>
         {posts.map((post) => {
           return (
-            <div className='posts' key={post._id}>
+            <div className='border' key={post._id}>
               {post.active ? (
                 <div>
                   <Link to={`/posts/singlepost`} onClick={() => sendPost(post)}>

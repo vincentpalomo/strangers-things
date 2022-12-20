@@ -83,7 +83,7 @@ const Profile = ({
               return (
                 <div className='posts' key={i}>
                   {post.active ? (
-                    <div>
+                    <div className='border'>
                       <Link
                         to={`/posts/singlepost`}
                         onClick={() => sendPost(post)}
@@ -112,7 +112,7 @@ const Profile = ({
             <h1>Messages:</h1>
             {userData.messages.map((message, i) => {
               return (
-                <div className='messages' key={i}>
+                <div className='border' key={i}>
                   <h3>Messages</h3>
                   <p>From Post: {message.post.title}</p>
                   <p>Post ID: {message.post._id}</p>
