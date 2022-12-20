@@ -60,46 +60,69 @@ const Profile = ({
   };
 
   return (
-    <div className='profile-container'>
+    <div className='flex justify-center items-center'>
       {userData === null ? (
         <h1>You are not logged in 🤨</h1>
       ) : (
-        <div>
-          <h1>Profile</h1>
-          <h3>👋 Welcome back, {userData.username}!</h3>
-          <p>Username: {userData.username}</p>
-          <p>User ID: {userData._id}</p>
-          <p>Cohort: {userData.cohort}</p>
+        <div className='h-full'>
+          <h1 className='text-2xl text-white font-bold m-2'>Profile</h1>
+          <div className='bg-slate-800 text-slate-100 rounded p-2 m-2'>
+            <div className='p-3 text-left'>
+              <h3 className='text-center font-bold text-lg p-1'>
+                👋 Welcome back, {userData.username}!
+              </h3>
+              <p>Username: {userData.username}</p>
+              <p>User ID: {userData._id}</p>
+              <p>Cohort: {userData.cohort}</p>
+            </div>
+          </div>
           <div>
             <Link to='/posts/addpost'>
-              <button>Create Post</button>
+              <button className='bg-slate-800 text-white p-2 m-2 rounded font-bold'>
+                Create Post
+              </button>
             </Link>
-            <button onClick={logout}>Logout</button>
+            <button
+              className='bg-slate-800 text-white p-2 m-2 rounded font-bold'
+              onClick={logout}
+            >
+              Logout
+            </button>
           </div>
 
           <div>
             <h1>My Posts:</h1>
             {userData.posts.map((post, i) => {
               return (
-                <div className='posts' key={i}>
+                <div className='bg-slate-800 rounded' key={i}>
                   {post.active ? (
-                    <div className='border'>
+                    <div className='text-white justify-center m-3 p-3'>
                       <Link
                         to={`/posts/singlepost`}
                         onClick={() => sendPost(post)}
                       >
-                        <h3>{post.title}</h3>
+                        <h3 className='bg-white text-slate-800 rounded text-center h-15 p-1 font-bold'>
+                          {post.title}
+                        </h3>
                       </Link>
-                      <p>{post.description}</p>
-                      <p>Price: {post.price}</p>
-                      <p>Location: {post.location}</p>
-                      <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'} </p>
+                      <div className='p-2'>
+                        <p>{post.description}</p>
+                        <p>Price: {post.price}</p>
+                        <p>Location: {post.location}</p>
+                        <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'} </p>
+                      </div>
                       <Link to='/posts/editpost'>
-                        <button onClick={() => getPostID(post._id)}>
+                        <button
+                          className='bg-slate-100 text-slate-800 p-2 m-2 rounded font-bold'
+                          onClick={() => getPostID(post._id)}
+                        >
                           Edit
                         </button>
                       </Link>
-                      <button onClick={() => deletePost(post._id, token)}>
+                      <button
+                        className='bg-slate-100 text-slate-800 p-2 m-2 rounded font-bold'
+                        onClick={() => deletePost(post._id, token)}
+                      >
                         Delete
                       </button>
                     </div>
@@ -112,21 +135,30 @@ const Profile = ({
             <h1>Messages:</h1>
             {userData.messages.map((message, i) => {
               return (
-                <div className='border' key={i}>
-                  <h3>Messages</h3>
-                  <p>From Post: {message.post.title}</p>
-                  <p>Post ID: {message.post._id}</p>
-                  <p>User: {message.fromUser.username}</p>
-                  <p>Message: {message.content}</p>
-                  {currentUserID !== message.fromUser._id ? (
-                    <div>
-                      <Link to='/account/messages'>
-                        <button onClick={() => getPostID(message.post._id)}>
-                          Reply
-                        </button>
-                      </Link>
+                <div className='bg-slate-800 rounded' key={i}>
+                  <div className='text-white justify-center m-3 p-3'>
+                    <h3 className='bg-white text-slate-800 rounded text-center h-15 font-bold'>
+                      Message from: {message.fromUser.username}
+                    </h3>
+                    <div className='p-2'>
+                      <p>From Post: {message.post.title}</p>
+                      <p>Post ID: {message.post._id}</p>
+                      <p>User: {message.fromUser.username}</p>
+                      <p>Message: {message.content}</p>
                     </div>
-                  ) : null}
+                    {currentUserID !== message.fromUser._id ? (
+                      <div>
+                        <Link to='/account/messages'>
+                          <button
+                            className='bg-slate-100 text-slate-800 p-2 m-2 rounded font-bold'
+                            onClick={() => getPostID(message.post._id)}
+                          >
+                            Reply
+                          </button>
+                        </Link>
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
               );
             })}

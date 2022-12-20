@@ -112,19 +112,21 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
       <div className='grid gap-4 grid-cols-3 grid-rows-3 p-3'>
         {posts.map((post) => {
           return (
-            <div className=' bg-slate-800 rounded-2xl' key={post._id}>
+            <div className=' bg-slate-800 rounded' key={post._id}>
               {post.active ? (
-                <div className='text-white justify-center m-3'>
+                <div className='text-white justify-center m-3 p-1'>
                   <Link to={`/posts/singlepost`} onClick={() => sendPost(post)}>
-                    <h3 className='bg-white text-slate-800 rounded text-center h-15 text'>
+                    <h3 className='bg-white text-slate-800 rounded text-center h-15 p-2 font-bold'>
                       {post.title}
                     </h3>
                   </Link>
-                  <p>{post.description}</p>
-                  <p>Price: {post.price}</p>
-                  <p>Seller: {post.author.username}</p>
-                  <p>Location: {post.location}</p>
-                  <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'}</p>
+                  <div className='p-1'>
+                    <p>{post.description}</p>
+                    <p>Price: {post.price}</p>
+                    <p>Seller: {post.author.username}</p>
+                    <p>Location: {post.location}</p>
+                    <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'}</p>
+                  </div>
                   <div>
                     {post.author._id === currentUserID ? (
                       <Link to='/posts/editpost'>
