@@ -48,7 +48,7 @@ const App = () => {
               setCurrentUserID={setCurrentUserID}
             />
           </header>
-          <body>
+          <section>
             <Route exact path='/'>
               <Home />
             </Route>
@@ -107,7 +107,7 @@ const App = () => {
                 <Register setToken={setToken} setOnline={setOnline} />
               </Route>
             </Switch>
-          </body>
+          </section>
         </div>
 
         <footer className='grid'>
