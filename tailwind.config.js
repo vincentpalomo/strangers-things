@@ -6,6 +6,17 @@ module.exports = {
   },
   plugins: [require('daisyui')],
   daisyui: {
-    themes: ['synthwave', 'cupcake'],
+    themes: [
+      'synthwave',
+      'cupcake',
+      'cyberpunk',
+      'pastel',
+      'fantasy',
+      'night',
+      'retro',
+      'aqua',
+      'dracula',
+      'light',
+    ],
   },
 };

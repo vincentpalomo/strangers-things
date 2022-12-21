@@ -42,7 +42,7 @@ const App = () => {
     <BrowserRouter>
       <div className='flex flex-col h-screen justify-between'>
         {/* header */}
-        <header className='bg-slate-700'>
+        <header>
           <Nav
             online={online}
             setOnline={setOnline}
@@ -115,9 +115,11 @@ const App = () => {
           </Switch>
         </section>
         {/* footer */}
-        <footer className='bg-slate-700 h-15'>
-          <div className='flex justify-center container relative mx-auto p-6 text-lg text-white'>
-            Stranger's Things Copyright 2022
+        <footer className='footer footer-center p-10 bg-primary text-primary-content'>
+          <div>
+            <p className='font-bold'>
+              Copyright © 2022 - All right reserved by Stranger's Things Ltd
+            </p>
           </div>
         </footer>
       </div>

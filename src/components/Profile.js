@@ -66,10 +66,10 @@ const Profile = ({
         <h1>You are not logged in 🤨</h1>
       ) : (
         <div className='h-full'>
-          <h1 className='text-2xl text-white font-bold m-2'>Profile</h1>
-          <div className='bg-slate-800 text-slate-100 rounded p-2 m-2'>
-            <div className='p-3 text-left'>
-              <h3 className='text-center font-bold text-lg p-1'>
+          <h1 className='text-2xl text-white font-bold m-2'>Profile:</h1>
+          <div className='card w-96 bg-primary text-primary-content'>
+            <div className='card-body'>
+              <h3 className='card-title'>
                 👋 Welcome back, {userData.username}!
               </h3>
               <p>Username: {userData.username}</p>
@@ -77,16 +77,11 @@ const Profile = ({
               <p>Cohort: {userData.cohort}</p>
             </div>
           </div>
-          <div>
+          <div className='flex mt-3 flex-row gap-3 justify-center p-3'>
             <Link to='/posts/addpost'>
-              <button className='bg-slate-800 text-white p-2 m-2 rounded font-bold'>
-                Create Post
-              </button>
+              <button className='btn'>Create Post</button>
             </Link>
-            <button
-              className='bg-slate-800 text-white p-2 m-2 rounded font-bold'
-              onClick={logout}
-            >
+            <button className='btn' onClick={logout}>
               Logout
             </button>
           </div>
@@ -95,16 +90,18 @@ const Profile = ({
             <h1 className='text-2xl text-white font-bold m-2'>My Posts:</h1>
             {userData.posts.map((post, i) => {
               return (
-                <div className='bg-slate-800 rounded' key={i}>
+                <div
+                  className='card w-96 bg-primary text-primary-content'
+                  key={i}
+                >
                   {post.active ? (
-                    <div className='text-white justify-center m-3 p-3'>
+                    <div className='card-body'>
                       <Link
+                        className='link link-hover link-neutral'
                         to={`/posts/singlepost`}
                         onClick={() => sendPost(post)}
                       >
-                        <h3 className='bg-white text-slate-800 rounded text-center h-15 p-1 font-bold'>
-                          {post.title}
-                        </h3>
+                        <h3 className='card-title'>{post.title}</h3>
                       </Link>
                       <div className='p-2'>
                         <p>{post.description}</p>
@@ -112,20 +109,22 @@ const Profile = ({
                         <p>Location: {post.location}</p>
                         <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'} </p>
                       </div>
-                      <Link to='/posts/editpost'>
+                      <div className='card-actions justify-end'>
+                        <Link to='/posts/editpost'>
+                          <button
+                            className='btn'
+                            onClick={() => getPostID(post._id, post)}
+                          >
+                            Edit
+                          </button>
+                        </Link>
                         <button
-                          className='bg-slate-100 text-slate-800 p-2 m-2 rounded font-bold'
-                          onClick={() => getPostID(post._id, post)}
+                          className='btn'
+                          onClick={() => deletePost(post._id, token)}
                         >
-                          Edit
+                          Delete
                         </button>
-                      </Link>
-                      <button
-                        className='bg-slate-100 text-slate-800 p-2 m-2 rounded font-bold'
-                        onClick={() => deletePost(post._id, token)}
-                      >
-                        Delete
-                      </button>
+                      </div>
                     </div>
                   ) : null}
                 </div>
@@ -136,9 +135,12 @@ const Profile = ({
             <h1 className='text-2xl text-white font-bold m-2'>Messages:</h1>
             {userData.messages.map((message, i) => {
               return (
-                <div className='bg-slate-800 rounded' key={i}>
-                  <div className='text-white justify-center m-3 p-3'>
-                    <h3 className='bg-white text-slate-800 rounded text-center h-15 font-bold'>
+                <div
+                  className='card w-96 bg-primary text-primary-content'
+                  key={i}
+                >
+                  <div className='card-body'>
+                    <h3 className='card-title text-neutral'>
                       Message from: {message.fromUser.username}
                     </h3>
                     <div className='p-2'>
@@ -148,10 +150,10 @@ const Profile = ({
                       <p>Message: {message.content}</p>
                     </div>
                     {currentUserID !== message.fromUser._id ? (
-                      <div>
+                      <div className='card-actions justify-end'>
                         <Link to='/account/messages'>
                           <button
-                            className='bg-slate-100 text-slate-800 p-2 m-2 rounded font-bold'
+                            className='btn'
                             onClick={() => getPostID(message.post._id)}
                           >
                             Reply

@@ -40,19 +40,31 @@ const Messages = ({ token, currentUserID, postID }) => {
     history.goBack();
   };
   return (
-    <div className='message-container'>
-      <button onClick={previousPage}>Go back</button>
-      <form onSubmit={messages}>
-        <label htmlFor='content'>Send your message to the Seller </label>
-        <input
-          type='text'
-          name='content'
-          value={content}
-          onChange={handleContent}
-          required
-        />
-        <button type='submit'>Reply</button>
-      </form>
+    <div className='hero min-h-screen bg-base-200'>
+      <div className='hero-content text-center'>
+        <div className='max-w-md'>
+          <form onSubmit={messages}>
+            <label htmlFor='content'>Send your message to the Seller </label>
+            <input
+              className='input input-bordered m-3'
+              type='text'
+              name='content'
+              value={content}
+              onChange={handleContent}
+            />
+            <div className='flex flex-row justify-center gap-6'>
+              <button className='btn btn-primary' type='submit'>
+                Reply
+              </button>
+            </div>
+          </form>
+          <span>
+            <button className='btn btn-primary' onClick={previousPage}>
+              Go back
+            </button>
+          </span>
+        </div>
+      </div>
     </div>
   );
 };

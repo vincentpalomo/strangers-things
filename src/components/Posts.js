@@ -61,14 +61,12 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
   };
 
   return (
-    <div className='posts-container'>
-      <div className='flex justify-evenly p-3'>
+    <div className='flex flex-col justify-center items-center'>
+      <div className='flex justify-evenly p-3 w-full mt-3'>
         <h1 className='text-2xl text-white font-bold m-2'>POSTS</h1>
         {online === true ? (
           <Link to='/posts/addpost'>
-            <button className='bg-slate-800 text-white p-2 m-2 rounded'>
-              Create Post
-            </button>
+            <button className='btn'>Create Post</button>
           </Link>
         ) : null}
         <form
@@ -79,29 +77,31 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
           }}
         >
           <input
-            className='p-2 rounded'
+            className='input input-bordered input-primary'
             type='text'
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button
-            className='bg-slate-800 text-white p-2 m-2 rounded'
-            type='submit'
-          >
+          <button className='btn m-3' type='submit'>
             Search
           </button>
         </form>
       </div>
-      <div className='grid gap-4 grid-cols-3 grid-rows-3 p-3'>
+      <div className='grid gap-4 grid-cols-3 grid-rows-3 mb-3'>
         {posts.filter(searchPost).map((post) => {
           return (
-            <div className=' bg-slate-800 rounded' key={post._id}>
+            <div
+              className='card w-96 bg-primary text-primary-content'
+              key={post._id}
+            >
               {post.active ? (
-                <div className='text-white justify-center m-3 p-1'>
-                  <Link to={`/posts/singlepost`} onClick={() => sendPost(post)}>
-                    <h3 className='bg-white text-slate-800 rounded text-center h-15 p-2 font-bold'>
-                      {post.title}
-                    </h3>
+                <div className='card-body'>
+                  <Link
+                    className='link link-hover link-neutral'
+                    to={`/posts/singlepost`}
+                    onClick={() => sendPost(post)}
+                  >
+                    <h3 className='card-title'>{post.title}</h3>
                   </Link>
                   <div className='p-1'>
                     {/* <p>{post.description}</p> */}
@@ -110,11 +110,11 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
                     <p>Location: {post.location}</p>
                     <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'}</p> */}
                   </div>
-                  <div>
+                  <div className='card-actions justify-end'>
                     {post.author._id === currentUserID ? (
                       <Link to='/posts/editpost'>
                         <button
-                          className='bg-slate-100 text-slate-800 p-2 m-2 rounded'
+                          className='btn'
                           onClick={() => getPostID(post._id, post)}
                         >
                           Edit
@@ -123,7 +123,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
                     ) : null}
                     {post.author._id === currentUserID ? (
                       <button
-                        className='bg-slate-100 text-slate-800 p-2 m-2 rounded'
+                        className='btn'
                         onClick={() => deletePost(post._id, token)}
                       >
                         Delete
@@ -132,7 +132,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
                     {post.author._id !== currentUserID && online === true ? (
                       <Link to='/account/messages'>
                         <button
-                          className='bg-slate-100 text-slate-800 p-2 m-2 rounded'
+                          className='btn'
                           onClick={() => getPostID(post._id)}
                         >
                           Message

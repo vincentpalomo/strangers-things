@@ -12,34 +12,31 @@ const Nav = ({ online, setOnline, setCurrentUserID }) => {
   };
 
   return (
-    <div className='relative container mx-auto p-6'>
-      <div className='flex items-center justify-between'>
-        <div className='pt-2 font-bold'>
-          <Link to='/'>
-            <h1 className='font-extrabold text-2xl'>Stranger's Things👥</h1>
-          </Link>
-        </div>
-        <Link className='hover:text-slate-100 text-xl' to='/'>
+    <div className='navbar navbar-center bg-primary text-primary-content py-6'>
+      <div className='px-6 font-bold'>
+        <Link to='/'>
+          <h1 className='font-extrabold text-2xl'>Stranger's Things👥</h1>
+        </Link>
+      </div>
+      <div className='mx-auto flex items-center gap-10'>
+        <Link className='btn btn-active text-lg' to='/'>
           Home
         </Link>
-        <Link className='hover:text-slate-100 text-xl' to='/posts'>
+
+        <Link className='btn btn-active text-lg' to='/posts'>
           Posts
         </Link>
         {online === true ? (
-          <Link className='hover:text-slate-100 text-xl' to='/account'>
+          <Link className='btn btn-active text-lg' to='/account'>
             Profile
           </Link>
         ) : (
-          <Link className='hover:text-slate-100 text-xl' to='/account/login'>
+          <Link className='btn btn-active text-lg' to='/account/login'>
             Login
           </Link>
         )}
         {online === true && (
-          <Link
-            className='hover:text-slate-100 text-xl'
-            to='/'
-            onClick={logout}
-          >
+          <Link className='btn btn-active text-lg' to='/' onClick={logout}>
             Logout
           </Link>
         )}
