@@ -27,7 +27,7 @@ const Profile = ({
       setCurrentUserID(currentUser.data._id);
       localStorage.setItem('userID', currentUser.data._id);
     } catch (err) {
-      console.error('something went wrong', err);
+      console.error('error in profile loggedinuser fn', err);
     }
   };
 
@@ -47,7 +47,7 @@ const Profile = ({
       }
       loggedInUser(token);
     } catch (err) {
-      console.error('something went wrong', err);
+      console.error('error in profile deletepost fn', err);
     }
   };
 

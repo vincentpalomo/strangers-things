@@ -32,7 +32,7 @@ const EditPost = ({ token, postID, postData }) => {
       console.log(editPost);
       history.goBack();
     } catch (err) {
-      console.error('something went wrong', err);
+      console.error('error in edit post edit fn', err);
     }
   };
 

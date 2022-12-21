@@ -23,7 +23,7 @@ const Register = ({ setToken, setOnline }) => {
       localStorage.setItem('token', register.data.token);
       history.push('/account');
     } catch (err) {
-      console.error('something went wrong', err);
+      console.error('error in register fetchregister fn', err);
     }
   };
 

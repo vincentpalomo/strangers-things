@@ -30,7 +30,7 @@ const AddPost = ({ token }) => {
       console.log(createPost);
       history.goBack();
     } catch (err) {
-      console.error('something went wrong', err);
+      console.error('error in addpost createpost fn', err);
     }
   };
 

@@ -35,7 +35,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
       const post = await fetchAllPosts();
       setPosts(post);
     } catch (error) {
-      console.error(error);
+      console.error('error in post fetchpost fn', error);
     }
   };
 
@@ -47,7 +47,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
       }
       fetchPosts();
     } catch (error) {
-      console.error(error);
+      console.error('error in post delete fn', error);
     }
   };
 

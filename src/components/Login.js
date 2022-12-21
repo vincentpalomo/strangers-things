@@ -24,7 +24,7 @@ const Login = ({ setToken, setOnline }) => {
       localStorage.setItem('token', login.data.token);
       history.push('/account');
     } catch (err) {
-      console.error('something went wrong', err);
+      console.error('error in login login fn', err);
     }
   };
 

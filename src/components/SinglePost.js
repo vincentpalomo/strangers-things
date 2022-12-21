@@ -14,7 +14,7 @@ const SinglePost = ({ token, postData, setPostID, currentUserID, online }) => {
       }
       history.push('/posts');
     } catch (err) {
-      console.error('something went wrong', err);
+      console.error('error in singlepost delete fn', err);
     }
   };
 
@@ -26,7 +26,7 @@ const SinglePost = ({ token, postData, setPostID, currentUserID, online }) => {
     history.goBack();
   };
   return (
-    <div className='flex justify-center items-center border h-full'>
+    <div className='flex justify-center items-center h-full mt-32 mb-32'>
       <div className='card w-1/3 bg-primary text-primary-content'>
         <div className='card-body'>
           <h3 className='card-title text-neutral text-2xl'>{post.title}</h3>
