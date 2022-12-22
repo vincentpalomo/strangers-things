@@ -12,7 +12,6 @@ import {
   SinglePost,
   Messages,
   Nav,
-  FormTemplate,
 } from './components';
 import styles from './components/globalstyles.css';
 
@@ -27,8 +26,8 @@ const App = () => {
   const [postData, setPostData] = useState();
 
   useEffect(() => {
-    const data = localStorage.getItem('token', token);
-    const userID = localStorage.getItem('userID', currentUserID);
+    const data = localStorage.getItem('token');
+    const userID = localStorage.getItem('userID');
     setToken(data);
     setCurrentUserID(userID);
     if (data) {
@@ -53,9 +52,6 @@ const App = () => {
         <section className='mb-auto flex-grow overflow-y-auto'>
           <Route exact path='/'>
             <Home />
-          </Route>
-          <Route path='/form'>
-            <FormTemplate />
           </Route>
           <Route exact path='/posts'>
             <Posts

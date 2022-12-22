@@ -3,8 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { fetchMessages } from '../api/api';
 
 const Messages = ({ token, postID }) => {
-  // console.log('post id:', postID);
-  // console.log('current user id:', currentUserID);
   const [content, setContent] = useState('');
   let history = useHistory();
 

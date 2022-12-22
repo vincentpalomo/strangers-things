@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+
 const Nav = ({ online, setOnline, setCurrentUserID }) => {
   let history = useHistory();
 

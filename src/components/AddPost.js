@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { fetchAddPost } from '../api/api';
 
 const AddPost = ({ token }) => {

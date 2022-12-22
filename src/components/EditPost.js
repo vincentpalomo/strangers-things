@@ -137,7 +137,7 @@ const EditPost = ({ token, postID, postData }) => {
               className='block font-bold mt-1 md:text-left mb-1 md:mb-0 pr-4'
               htmlFor='deliver'
             >
-              <span>Will Deliver:</span>
+              <span>Will Deliver: </span>
               <input
                 className='checkbox checkbox-success'
                 type='checkbox'

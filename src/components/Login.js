@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { APIURL } from '..';
 import { fetchLogin } from '../api/api';
 
 const Login = ({ setToken, setOnline }) => {

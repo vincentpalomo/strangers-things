@@ -20,8 +20,6 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
     fetchPosts();
   }, [token]);
 
-  // let searchPost render the page again with updating the post array
-
   const searchPost = (post) => {
     return (
       post.title.toLowerCase().includes(searchQuery) ||
