@@ -127,3 +127,22 @@ export const fetchLoggedInUser = async (token) => {
   const json = await res.json();
   return json;
 };
+
+// messages
+
+export const fetchMessages = async (token, postID, content) => {
+  const res = await fetch(`${APIURL}/posts/${postID}/messages`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      message: {
+        content: `${content}`,
+      },
+    }),
+  });
+  const json = await res.json();
+  return json;
+};

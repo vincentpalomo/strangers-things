@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { APIURL } from '..';
+import { fetchMessages } from '../api/api';
 
-const Messages = ({ token, currentUserID, postID }) => {
+const Messages = ({ token, postID }) => {
   // console.log('post id:', postID);
   // console.log('current user id:', currentUserID);
   const [content, setContent] = useState('');
@@ -12,24 +12,13 @@ const Messages = ({ token, currentUserID, postID }) => {
     e.preventDefault();
     setContent('');
 
-    const res = await fetch(`${APIURL}/posts/${postID}/messages`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        message: {
-          content: `${content}`,
-        },
-      }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        history.goBack();
-      })
-      .catch(console.error);
+    try {
+      const messages = await fetchMessages(token, postID, content);
+      console.log(messages);
+      history.goBack();
+    } catch (err) {
+      console.error('error in messages message fn', err);
+    }
   };
 
   const handleContent = (e) => {
