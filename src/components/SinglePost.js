@@ -26,7 +26,7 @@ const SinglePost = ({ token, postData, setPostID, currentUserID, online }) => {
     history.goBack();
   };
   return (
-    <div className='flex justify-center items-center h-full mt-32 mb-32'>
+    <div className='flex justify-center items-center my-10'>
       <div className='card w-1/3 bg-primary text-primary-content'>
         <div className='card-body'>
           <h3 className='card-title text-neutral text-2xl'>{post.title}</h3>
