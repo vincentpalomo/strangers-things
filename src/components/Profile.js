@@ -6,6 +6,7 @@ const Profile = ({
   token,
   setOnline,
   setCurrentUserID,
+  currentUserID,
   setPostID,
   setPostData,
 }) => {
@@ -98,7 +99,7 @@ const Profile = ({
             </button>
           </div>
 
-          <div>
+          <div className='mb-3'>
             <h1 className='m-2 text-2xl font-bold text-white'>My Posts:</h1>
             {userData.posts.map((post, i) => {
               return (
@@ -140,9 +141,12 @@ const Profile = ({
                       {post.messages.length > 0 && (
                         <div className='p-3 rounded bg-secondary'>
                           <h1 className='card-title'>Messages:</h1>
-                          {post.messages.map((post) => {
+                          {post.messages.map((post, i) => {
                             return (
-                              <div className='border-b border-style: solid'>
+                              <div
+                                className='border-b border-style: solid'
+                                key={i}
+                              >
                                 <div>
                                   <span className='font-extrabold font-xl'>
                                     {post.fromUser.username}:{' '}
