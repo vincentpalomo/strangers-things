@@ -40,14 +40,14 @@ As an instructor I want to see you demonstrate mastery (when appropriate) of:
     CSS Basics including:
         proper use of Flex / Grid for creating layouts ✔
         proper use of cascading and specificity to prevent bleed into unrelated elements ✔
-    Developing a good User Experience (UX) through a clean interface
+    Developing a good User Experience (UX) through a clean interface ✔
 
 As an engineering manager I want to see code (HTML, CSS, and JS) that:
 
-    is cleanly written
-    has no unused functions or variables
-    has expressive variable, function, and CSS class names
-    is organized into a coherent flow
+    is cleanly written ✔
+    has no unused functions or variables ✔
+    has expressive variable, function, and CSS class names ✔
+    is organized into a coherent flow ✔
 
 Application Specific Requirements (70%)
 
@@ -77,10 +77,10 @@ Your task is to build out a Craigslist-Lite, complete with users, posts, and mes
 
     Authenticated Users should not be able to:
         Delete posts for which they are not the author ✔
-        Send a message to themselves
+        Send a message to themselves ✔
 
     All users should be able to:
-        Filter posts with a simple text matcher (no fetch call needed here)
+        Filter posts with a simple text matcher (no fetch call needed here) ✔
 
     Opportunity for EXTRA CREDIT of up to 5% added to your overall score. Authenticated Users would be delighted to be able to:
         Edit a post for which they are the author ✔
