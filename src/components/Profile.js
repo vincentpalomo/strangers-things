@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { fetchLoggedInUser, fetchDeletePost } from '../api/api';
+import { fetchLoggedInUser, fetchDeletePost, fetchMessages } from '../api/api';
 
 const Profile = ({
   token,
   setOnline,
-  currentUserID,
   setCurrentUserID,
   setPostID,
   setPostData,
 }) => {
   const [userData, setUserData] = useState(null);
+  const [content, setContent] = useState('');
   let history = useHistory();
+  console.log(userData);
 
   useEffect(() => {
     if (token === '') {
@@ -28,6 +29,17 @@ const Profile = ({
       localStorage.setItem('userID', currentUser.data._id);
     } catch (err) {
       console.error('error in profile loggedinuser fn', err);
+    }
+  };
+
+  const messages = async (postID) => {
+    setContent('');
+    try {
+      const messages = await fetchMessages(token, postID, content);
+      console.log(messages);
+      loggedInUser(token);
+    } catch (err) {
+      console.error('error in profile message fn', err);
     }
   };
 
@@ -61,12 +73,12 @@ const Profile = ({
   };
 
   return (
-    <div className='flex justify-center items-center'>
+    <div className='flex items-center justify-center'>
       {userData === null ? (
         <h1>You are not logged in 🤨</h1>
       ) : (
         <div className='h-full'>
-          <h1 className='text-2xl text-white font-bold m-2'>Profile:</h1>
+          <h1 className='m-2 text-2xl font-bold text-white'>Profile:</h1>
           <div className='card w-96 bg-primary text-primary-content'>
             <div className='card-body'>
               <h3 className='card-title'>
@@ -77,7 +89,7 @@ const Profile = ({
               <p>Cohort: {userData.cohort}</p>
             </div>
           </div>
-          <div className='flex mt-3 flex-row gap-3 justify-center p-3'>
+          <div className='flex flex-row justify-center gap-3 p-3 mt-3'>
             <Link to='/posts/addpost'>
               <button className='btn'>Create Post</button>
             </Link>
@@ -87,7 +99,7 @@ const Profile = ({
           </div>
 
           <div>
-            <h1 className='text-2xl text-white font-bold m-2'>My Posts:</h1>
+            <h1 className='m-2 text-2xl font-bold text-white'>My Posts:</h1>
             {userData.posts.map((post, i) => {
               return (
                 <div
@@ -109,7 +121,7 @@ const Profile = ({
                         <p>Location: {post.location}</p>
                         <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'} </p>
                       </div>
-                      <div className='card-actions justify-end'>
+                      <div className='justify-end card-actions'>
                         <Link to='/posts/editpost'>
                           <button
                             className='btn'
@@ -125,14 +137,46 @@ const Profile = ({
                           Delete
                         </button>
                       </div>
+                      {post.messages.length > 0 && (
+                        <div className='p-3 rounded bg-secondary'>
+                          <h1 className='card-title'>Messages:</h1>
+                          {post.messages.map((post) => {
+                            return (
+                              <div className='border-b border-style: solid'>
+                                <div>
+                                  <span className='font-extrabold font-xl'>
+                                    {post.fromUser.username}:{' '}
+                                  </span>
+                                  {post.content}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                      <div className='card-body'>
+                        <input
+                          className='m-3 input input-bordered text-neutral'
+                          type='text'
+                          name='content'
+                          value={content}
+                          onChange={(e) => setContent(e.target.value)}
+                        />
+                        <button
+                          className='btn'
+                          onClick={() => messages(post._id)}
+                        >
+                          Message
+                        </button>
+                      </div>
                     </div>
                   ) : null}
                 </div>
               );
             })}
           </div>
-          <div>
-            <h1 className='text-2xl text-white font-bold m-2'>Messages:</h1>
+          {/* <div>
+            <h1 className='m-2 text-2xl font-bold text-white'>Messages:</h1>
             {userData.messages.map((message, i) => {
               return (
                 <div
@@ -150,7 +194,7 @@ const Profile = ({
                       <p>Message: {message.content}</p>
                     </div>
                     {currentUserID !== message.fromUser._id ? (
-                      <div className='card-actions justify-end'>
+                      <div className='justify-end card-actions'>
                         <Link to='/account/messages'>
                           <button
                             className='btn'
@@ -165,7 +209,7 @@ const Profile = ({
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </div>
       )}
     </div>

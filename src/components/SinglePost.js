@@ -4,6 +4,7 @@ import { fetchDeletePost } from '../api/api';
 
 const SinglePost = ({ token, postData, setPostID, currentUserID, online }) => {
   let post = postData;
+  console.log(post);
   let history = useHistory();
 
   const deletePost = async (postID, token) => {
@@ -26,18 +27,18 @@ const SinglePost = ({ token, postData, setPostID, currentUserID, online }) => {
     history.goBack();
   };
   return (
-    <div className='flex justify-center items-center my-10'>
-      <div className='card w-1/3 bg-primary text-primary-content'>
+    <div className='flex items-center justify-center my-10'>
+      <div className='w-1/3 card bg-primary text-primary-content'>
         <div className='card-body'>
-          <h3 className='card-title text-neutral text-2xl'>{post.title}</h3>
-          <div className='p-1 text-neutral text-base'>
+          <h3 className='text-2xl card-title text-neutral'>{post.title}</h3>
+          <div className='p-1 text-base text-neutral'>
             <p>Description: {post.description}</p>
             <p>Price: {post.price}</p>
             <p>Seller: {post.author.username}</p>
             <p>Location: {post.location}</p>
             <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'}</p>
           </div>
-          <div className='card-actions justify-end'>
+          <div className='justify-end card-actions'>
             {post.author._id === currentUserID ? (
               <Link to='/posts/editpost'>
                 <button className='btn' onClick={() => getPostID(post._id)}>
@@ -65,7 +66,7 @@ const SinglePost = ({ token, postData, setPostID, currentUserID, online }) => {
             </button>
           </div>
           {online === true && post.messages.length > 0 ? (
-            <div className='bg-secondary rounded p-3 text-slate-800'>
+            <div className='p-3 rounded bg-secondary text-slate-800'>
               {post.messages.map((message, i) => {
                 return (
                   <div className='card-body' key={i}>

@@ -59,17 +59,17 @@ const AddPost = ({ token }) => {
   };
 
   return (
-    <div className='flex justify-center items-center p-12'>
+    <div className='flex items-center justify-center p-12'>
       <div className='flex flex-col'>
-        <h1 className='text-2xl text-white font-bold m-2'>Create Post 📃</h1>
+        <h1 className='m-2 text-2xl font-bold text-neutral'>Create Post 📃</h1>
         <button className='btn' onClick={previousPage}>
           Go back
         </button>
         <form className='w-full max-w-sm' onSubmit={createPost}>
-          <div className='md:flex md:items-center mb-1'>
+          <div className='mb-1 md:flex md:items-center'>
             <div className='md:w-1/3'>
               <label
-                className='block font-bold mt-1 md:text-right mb-1 md:mb-0 pr-4'
+                className='block pr-4 mt-1 mb-1 font-bold md:text-right md:mb-0'
                 htmlFor='title'
               >
                 Title:
@@ -86,10 +86,10 @@ const AddPost = ({ token }) => {
               </div>
             </div>
           </div>
-          <div className='md:flex md:items-center mb-1'>
+          <div className='mb-1 md:flex md:items-center'>
             <div className='md:w-1/3'>
               <label
-                className='block font-bold md:text-right mb-1 md:mb-0 pr-4'
+                className='block pr-4 mb-1 font-bold md:text-right md:mb-0'
                 htmlFor='description'
               >
                 Description:
@@ -106,10 +106,10 @@ const AddPost = ({ token }) => {
               </div>
             </div>
           </div>
-          <div className='md:flex md:items-center mb-1'>
+          <div className='mb-1 md:flex md:items-center'>
             <div className='md:w-1/3'>
               <label
-                className='block font-bold md:text-right mb-1 md:mb-0 pr-4'
+                className='block pr-4 mb-1 font-bold md:text-right md:mb-0'
                 htmlFor='price'
               >
                 Price:
@@ -126,10 +126,10 @@ const AddPost = ({ token }) => {
               </div>
             </div>
           </div>
-          <div className='md:flex md:items-center mb-1'>
+          <div className='mb-1 md:flex md:items-center'>
             <div className='md:w-1/3'>
               <label
-                className='block font-bold md:text-right mb-1 md:mb-0 pr-4'
+                className='block pr-4 mb-1 font-bold md:text-right md:mb-0'
                 htmlFor='location'
               >
                 Location:
@@ -145,10 +145,10 @@ const AddPost = ({ token }) => {
               </div>
             </div>
           </div>
-          <div className='md:flex md:items-center mb-1'>
+          <div className='mb-1 md:flex md:items-center'>
             <div className='mb-5'>
               <label
-                className='block font-bold md:text-right mb-1 md:mb-0 pr-4'
+                className='block pr-4 mb-1 font-bold md:text-right md:mb-0'
                 htmlFor='deliver'
               >
                 <span>Will Deliver:</span>

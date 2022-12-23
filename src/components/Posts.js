@@ -60,9 +60,9 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
   };
 
   return (
-    <div className='flex flex-col justify-center items-center'>
-      <div className='flex justify-evenly p-3 w-full mt-3'>
-        <h1 className='text-2xl text-white font-bold m-2'>POSTS</h1>
+    <div className='flex flex-col items-center justify-center'>
+      <div className='flex w-full p-3 mt-3 justify-evenly'>
+        <h1 className='m-2 text-2xl font-bold text-white'>POSTS</h1>
         {online === true ? (
           <Link to='/posts/addpost'>
             <button className='btn'>Create Post</button>
@@ -81,12 +81,12 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button className='btn m-3' type='submit'>
+          <button className='m-3 btn' type='submit'>
             Search
           </button>
         </form>
       </div>
-      <div className='grid gap-4 grid-cols-3 grid-rows-3 mb-3'>
+      <div className='grid mb-3 lg:grid-cols-3 lg:grid-rows-3 lg:gap-4 md:grid-cols-2 md:grid-rows-2 md:gap-4 sm:grid-col-1 sm:mb-3 sm:gap-4'>
         {posts.filter(searchPost).map((post) => {
           return (
             <div
@@ -109,7 +109,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
                     <p>Location: {post.location}</p>
                     <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'}</p> */}
                   </div>
-                  <div className='card-actions justify-end'>
+                  <div className='justify-end card-actions'>
                     {post.author._id === currentUserID ? (
                       <Link to='/posts/editpost'>
                         <button
