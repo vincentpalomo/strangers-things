@@ -5,6 +5,7 @@ import { fetchAllPosts, fetchDeletePost } from '../api/api';
 const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
   const [posts, setPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  console.log(posts);
 
   useEffect(() => {
     if (currentUserID === '') {
