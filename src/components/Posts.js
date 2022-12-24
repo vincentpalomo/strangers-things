@@ -62,7 +62,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
   return (
     <div className='flex flex-col items-center justify-center'>
       <div className='flex w-full p-3 mt-3 justify-evenly'>
-        <h1 className='m-2 text-2xl font-bold text-white'>POSTS</h1>
+        <h1 className='m-2 text-2xl font-bold text-primary'>POSTS</h1>
         {online === true ? (
           <Link to='/posts/addpost'>
             <button className='btn'>Create Post</button>

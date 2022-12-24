@@ -39,7 +39,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className='flex flex-col h-screen justify-between'>
+      <div className='flex flex-col justify-between h-screen'>
         {/* header */}
         <header>
           <Nav
@@ -49,7 +49,7 @@ const App = () => {
           />
         </header>
         {/* body */}
-        <section className='mb-auto flex-grow overflow-y-auto'>
+        <section className='flex-grow mb-auto overflow-y-auto'>
           <Route exact path='/'>
             <Home />
           </Route>
@@ -111,7 +111,7 @@ const App = () => {
           </Switch>
         </section>
         {/* footer */}
-        <footer className='footer footer-center p-10 bg-primary text-primary-content'>
+        <footer className='p-10 footer footer-center bg-primary text-primary-content'>
           <div>
             <p className='font-bold'>
               Copyright © 2022 - All right reserved by Stranger's Things Ltd

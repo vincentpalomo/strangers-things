@@ -34,26 +34,6 @@ const AddPost = ({ token }) => {
     }
   };
 
-  const handleTitle = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const handleDescription = (e) => {
-    setDescription(e.target.value);
-  };
-
-  const handlePrice = (e) => {
-    setPrice(e.target.value);
-  };
-
-  const handleLocation = (e) => {
-    setLocation(e.target.value);
-  };
-
-  const handleDeliver = (e) => {
-    setDeliver(e.target.checked);
-  };
-
   const previousPage = () => {
     history.goBack();
   };
@@ -61,7 +41,7 @@ const AddPost = ({ token }) => {
   return (
     <div className='flex items-center justify-center p-12'>
       <div className='flex flex-col'>
-        <h1 className='m-2 text-2xl font-bold text-neutral'>Create Post 📃</h1>
+        <h1 className='m-2 text-2xl font-bold text-primary'>Create Post 📃</h1>
         <button className='btn' onClick={previousPage}>
           Go back
         </button>
@@ -80,7 +60,7 @@ const AddPost = ({ token }) => {
                   type='text'
                   name='title'
                   value={title}
-                  onChange={handleTitle}
+                  onChange={(e) => setTitle(e.target.value)}
                   required
                 />
               </div>
@@ -100,7 +80,7 @@ const AddPost = ({ token }) => {
                   type='description'
                   name='description'
                   value={description}
-                  onChange={handleDescription}
+                  onChange={(e) => setDescription(e.target.value)}
                   required
                 />
               </div>
@@ -120,7 +100,7 @@ const AddPost = ({ token }) => {
                   type='text'
                   name='price'
                   value={price}
-                  onChange={handlePrice}
+                  onChange={(e) => setPrice(e.target.value)}
                   required
                 />
               </div>
@@ -140,7 +120,7 @@ const AddPost = ({ token }) => {
                   type='text'
                   name='location'
                   value={location}
-                  onChange={handleLocation}
+                  onChange={(e) => setLocation(e.target.value)}
                 />
               </div>
             </div>
@@ -157,7 +137,7 @@ const AddPost = ({ token }) => {
                   type='checkbox'
                   name='deliver'
                   checked={deliver}
-                  onChange={handleDeliver}
+                  onChange={(e) => setDeliver(e.target.checked)}
                 />
               </label>
             </div>

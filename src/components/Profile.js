@@ -79,7 +79,7 @@ const Profile = ({
         <h1>You are not logged in 🤨</h1>
       ) : (
         <div className='h-full'>
-          <h1 className='m-2 text-2xl font-bold text-white'>Profile:</h1>
+          <h1 className='m-2 text-2xl font-bold text-primary'>Profile:</h1>
           <div className='card w-96 bg-primary text-primary-content'>
             <div className='card-body'>
               <h3 className='card-title'>
@@ -98,16 +98,16 @@ const Profile = ({
               Logout
             </button>
           </div>
-
+          {/* {post and messages} */}
           <div className='mb-3'>
-            <h1 className='m-2 text-2xl font-bold text-white'>My Posts:</h1>
+            <h1 className='m-2 text-2xl font-bold text-primary'>My Posts:</h1>
             {userData.posts.map((post, i) => {
               return (
                 <div
                   className='card w-96 bg-primary text-primary-content'
                   key={i}
                 >
-                  {post.active ? (
+                  {post.active && (
                     <div className='card-body'>
                       <Link
                         className='link link-hover link-neutral'
@@ -160,7 +160,7 @@ const Profile = ({
                       )}
                       <div className='card-body'>
                         <input
-                          className='m-3 input input-bordered text-neutral'
+                          className='m-3 input input-bordered text-secondary'
                           type='text'
                           name='content'
                           value={content}
@@ -174,13 +174,13 @@ const Profile = ({
                         </button>
                       </div>
                     </div>
-                  ) : null}
+                  )}
                 </div>
               );
             })}
           </div>
-          {/* <div>
-            <h1 className='m-2 text-2xl font-bold text-white'>Messages:</h1>
+          <div>
+            <h1 className='m-2 text-2xl font-bold text-primary'>Messages:</h1>
             {userData.messages.map((message, i) => {
               return (
                 <div
@@ -189,15 +189,14 @@ const Profile = ({
                 >
                   <div className='card-body'>
                     <h3 className='card-title text-neutral'>
-                      Message from: {message.fromUser.username}
+                      Post: {message.post.title}
                     </h3>
-                    <div className='p-2'>
-                      <p>From Post: {message.post.title}</p>
-                      <p>Post ID: {message.post._id}</p>
-                      <p>User: {message.fromUser.username}</p>
-                      <p>Message: {message.content}</p>
+                    <div className='p-2 bg-secondary'>
+                      <p>
+                        {message.fromUser.username}: {message.content}
+                      </p>
                     </div>
-                    {currentUserID !== message.fromUser._id ? (
+                    {currentUserID !== message.fromUser._id && (
                       <div className='justify-end card-actions'>
                         <Link to='/account/messages'>
                           <button
@@ -208,12 +207,12 @@ const Profile = ({
                           </button>
                         </Link>
                       </div>
-                    ) : null}
+                    )}
                   </div>
                 </div>
               );
             })}
-          </div> */}
+          </div>
         </div>
       )}
     </div>
