@@ -66,7 +66,7 @@ const SinglePost = ({ token, postData, setPostID, currentUserID, online }) => {
             </button>
           </div>
           {online === true && post.messages.length > 0 ? (
-            <div className='p-3 rounded bg-secondary text-slate-800'>
+            <div className='p-3 rounded bg-secondary'>
               {post.messages.map((message, i) => {
                 return (
                   <div className='card-body' key={i}>

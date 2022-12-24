@@ -98,7 +98,7 @@ const Profile = ({
               Logout
             </button>
           </div>
-          <div className='grid h-1 grid-cols-2 grid-rows-2 gap-6 mb-3'>
+          <div className='grid h-1 gap-6 mb-3 md:grid-cols-2 md:grid-rows-2 sm:grid-cols-1'>
             {/* {posts} */}
             <div className='mb-3'>
               <h1 className='m-2 text-2xl font-bold text-primary'>My Posts:</h1>
