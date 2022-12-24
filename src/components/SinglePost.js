@@ -4,7 +4,6 @@ import { fetchDeletePost } from '../api/api';
 
 const SinglePost = ({ token, postData, setPostID, currentUserID, online }) => {
   let post = postData;
-  console.log(post);
   let history = useHistory();
 
   const deletePost = async (postID, token) => {

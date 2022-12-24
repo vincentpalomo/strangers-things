@@ -6,14 +6,12 @@ const Profile = ({
   token,
   setOnline,
   setCurrentUserID,
-  currentUserID,
   setPostID,
   setPostData,
 }) => {
   const [userData, setUserData] = useState(null);
   const [content, setContent] = useState('');
   let history = useHistory();
-  console.log(userData);
 
   useEffect(() => {
     if (token === '') {
@@ -49,6 +47,7 @@ const Profile = ({
     setCurrentUserID('');
     localStorage.removeItem('token');
     localStorage.removeItem('userID');
+    localStorage.removeItem('theme');
     history.push('./');
   };
 
@@ -202,18 +201,6 @@ const Profile = ({
                           {message.fromUser.username}: {message.content}
                         </p>
                       </div>
-                      {/* {currentUserID !== message.fromUser._id && (
-                      <div className='justify-end card-actions'>
-                        <Link to='/account/messages'>
-                          <button
-                            className='btn'
-                            onClick={() => getPostID(message.post._id)}
-                          >
-                            Reply
-                          </button>
-                        </Link>
-                      </div>
-                    )} */}
                     </div>
                   </div>
                 );

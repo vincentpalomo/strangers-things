@@ -5,7 +5,6 @@ import { fetchAllPosts, fetchDeletePost } from '../api/api';
 const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
   const [posts, setPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  console.log(posts);
 
   useEffect(() => {
     if (currentUserID === '') {
@@ -103,11 +102,7 @@ const Posts = ({ token, currentUserID, online, setPostID, setPostData }) => {
                     <h3 className='card-title'>{post.title}</h3>
                   </Link>
                   <div className='p-1'>
-                    {/* <p>{post.description}</p> */}
                     <p>Price: {post.price}</p>
-                    {/* <p>Seller: {post.author.username}</p>
-                    <p>Location: {post.location}</p>
-                    <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'}</p> */}
                   </div>
                   <div className='justify-end card-actions'>
                     {post.author._id === currentUserID ? (

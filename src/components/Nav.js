@@ -6,8 +6,15 @@ const Nav = ({ online, setOnline, setCurrentUserID }) => {
   const [theme, setTheme] = useState('winter');
 
   const toggleTheme = () => {
-    setTheme(theme === 'night' ? 'winter' : 'night');
+    localStorage.setItem('theme', theme === 'night' ? 'winter' : 'night');
+    setTheme((prevTheme) => (prevTheme === 'night' ? 'winter' : 'night'));
   };
+
+  useEffect(() => {
+    if (localStorage.getItem('theme')) {
+      setTheme(localStorage.getItem('theme'));
+    }
+  }, []);
 
   useEffect(() => {
     document.querySelector('html').setAttribute('data-theme', theme);
@@ -18,6 +25,7 @@ const Nav = ({ online, setOnline, setCurrentUserID }) => {
     setCurrentUserID('');
     localStorage.removeItem('token');
     localStorage.removeItem('userID');
+    localStorage.removeItem('theme');
     history.push('./');
   };
 

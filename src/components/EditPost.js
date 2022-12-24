@@ -9,7 +9,6 @@ const EditPost = ({ token, postID, postData }) => {
   const [location, setLocation] = useState(postData.location);
   const [deliver, setDeliver] = useState(postData.willDeliver);
   let history = useHistory();
-  console.log(postData);
 
   const editPost = async (e) => {
     e.preventDefault();
