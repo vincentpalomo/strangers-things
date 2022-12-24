@@ -2,6 +2,8 @@
 
 https://strangers-things.herokuapp.com/api/
 
+Hosted site: https://strangers-things-vp-fsa.netlify.app
+
 synth project for FSA
 
 Grading Stranger's Things (Requirements & Mockup)
@@ -73,7 +75,7 @@ Your task is to build out a Craigslist-Lite, complete with users, posts, and mes
         Delete a post for which they are the author ✔
         Send a message to the author of any post for which they are not the author ✔
         See all messages for any post for which they are the author ✔
-        See all messages they've received in a special view
+        See all messages they've received in a special view ✔
 
     Authenticated Users should not be able to:
         Delete posts for which they are not the author ✔
