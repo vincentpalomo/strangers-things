@@ -28,10 +28,10 @@ const SinglePost = ({ token, postData, setPostID, currentUserID, online }) => {
   };
   return (
     <div className='flex items-center justify-center my-10'>
-      <div className='w-1/3 card bg-primary text-primary-content'>
+      <div className='w-2/4 card bg-primary text-primary-content'>
         <div className='card-body'>
           <h3 className='text-2xl card-title text-neutral'>{post.title}</h3>
-          <div className='p-1 text-base text-neutral'>
+          <div className='p-2 text-base rounded bg-secondary'>
             <p>Description: {post.description}</p>
             <p>Price: {post.price}</p>
             <p>Seller: {post.author.username}</p>

@@ -2,7 +2,7 @@ export const APIURL =
   'https://strangers-things.herokuapp.com/api/2209-FTB-CT-WEB-PT';
 
 // steve's updated api
-// export const APIURL = 'https://20a4d1385484.ngrok.io/api/';
+// export const APIURL = 'https://20a4d1385484.ngrok.io/api/2209-FTB-CT-WEB-PT';
 
 // fetch all posts
 export const fetchAllPosts = async () => {

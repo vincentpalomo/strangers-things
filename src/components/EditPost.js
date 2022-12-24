@@ -74,8 +74,8 @@ const EditPost = ({ token, postID, postData }) => {
             >
               Description:
             </label>
-            <input
-              className='input input-bordered'
+            <textarea
+              className='w-56 textarea textarea-bordered'
               type='description'
               name='description'
               value={description}

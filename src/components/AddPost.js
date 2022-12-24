@@ -75,8 +75,8 @@ const AddPost = ({ token }) => {
                 Description:
               </label>
               <div className='md:w-2/3'>
-                <input
-                  className='input input-bordered'
+                <textarea
+                  className='w-56 textarea textarea-bordered'
                   type='description'
                   name='description'
                   value={description}
@@ -133,7 +133,7 @@ const AddPost = ({ token }) => {
               >
                 <span>Will Deliver:</span>
                 <input
-                  className='checkbox checkbox-success'
+                  className='m-1 checkbox checkbox-success'
                   type='checkbox'
                   name='deliver'
                   checked={deliver}

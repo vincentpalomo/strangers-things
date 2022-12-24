@@ -27,20 +27,12 @@ const Register = ({ setToken, setOnline }) => {
     }
   };
 
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
   return (
-    <div className='flex justify-center items-center h-full'>
+    <div className='flex items-center justify-center h-full'>
       <div className='flex flex-col space-y-12'>
-        <h1 className='text-2xl text-white font-bold m-2'>Create an account</h1>
+        <h1 className='m-2 text-2xl font-bold'>Create an account</h1>
         <form onSubmit={handleSubmit}>
-          <label className='p-3 font-bold text-lg' htmlFor='username'>
+          <label className='p-3 text-lg font-bold' htmlFor='username'>
             Username:
           </label>
           <input
@@ -48,10 +40,10 @@ const Register = ({ setToken, setOnline }) => {
             type='text'
             name='usename'
             value={username}
-            onChange={handleUsername}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
-          <label className='p-3 font-bold text-lg' htmlFor='password'>
+          <label className='p-3 text-lg font-bold' htmlFor='password'>
             Password:
           </label>
           <input
@@ -59,17 +51,17 @@ const Register = ({ setToken, setOnline }) => {
             type='password'
             name='password'
             value={password}
-            onChange={handlePassword}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
           <span className='p-3'>
-            <button className='btn font-bold text-lg' type='submit'>
+            <button className='text-lg font-bold btn' type='submit'>
               Create Account
             </button>
           </span>
-          <p className='text-red-600 font-bold text-center'>{errorMessage}</p>
+          <p className='font-bold text-center text-red-600'>{errorMessage}</p>
         </form>
-        <Link className='font-bold text-center text-base' to='/account/login'>
+        <Link className='text-base font-bold text-center' to='/account/login'>
           🤔 Already a user? Sign in!
         </Link>
       </div>
