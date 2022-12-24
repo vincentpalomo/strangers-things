@@ -54,7 +54,7 @@ const Nav = ({ online, setOnline, setCurrentUserID }) => {
           <input type='checkbox' onClick={toggleTheme} />
 
           <svg
-            className='w-10 h-10 fill-current swap-on'
+            className='w-10 h-10 fill-current swap-off'
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 24 24'
           >
@@ -62,7 +62,7 @@ const Nav = ({ online, setOnline, setCurrentUserID }) => {
           </svg>
 
           <svg
-            className='w-10 h-10 fill-current swap-off'
+            className='w-10 h-10 fill-current swap-on'
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 24 24'
           >
