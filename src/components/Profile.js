@@ -98,105 +98,111 @@ const Profile = ({
               Logout
             </button>
           </div>
-          {/* {post and messages} */}
-          <div className='mb-3'>
-            <h1 className='m-2 text-2xl font-bold text-primary'>My Posts:</h1>
-            {userData.posts.map((post, i) => {
-              return (
-                <div
-                  className='card w-96 bg-primary text-primary-content'
-                  key={i}
-                >
-                  {post.active && (
-                    <div className='card-body'>
-                      <Link
-                        className='link link-hover link-neutral'
-                        to={`/posts/singlepost`}
-                        onClick={() => sendPost(post)}
-                      >
-                        <h3 className='card-title'>{post.title}</h3>
-                      </Link>
-                      <div className='p-2'>
-                        <p>{post.description}</p>
-                        <p>Price: {post.price}</p>
-                        <p>Location: {post.location}</p>
-                        <p>Will Deliver: {post.willDeliver ? 'Yes' : 'No'} </p>
-                      </div>
-                      <div className='justify-end card-actions'>
-                        <Link to='/posts/editpost'>
+          <div className='grid h-1 grid-cols-2 grid-rows-2 gap-6 mb-3'>
+            {/* {posts} */}
+            <div className='mb-3'>
+              <h1 className='m-2 text-2xl font-bold text-primary'>My Posts:</h1>
+              {userData.posts.map((post, i) => {
+                return (
+                  <div
+                    className='mb-3 card w-96 bg-primary text-primary-content'
+                    key={i}
+                  >
+                    {post.active ? (
+                      <div className='card-body'>
+                        <Link
+                          className='link link-hover link-neutral'
+                          to={`/posts/singlepost`}
+                          onClick={() => sendPost(post)}
+                        >
+                          <h3 className='card-title'>{post.title}</h3>
+                        </Link>
+                        <div className='p-2'>
+                          <p>{post.description}</p>
+                          <p>Price: {post.price}</p>
+                          <p>Location: {post.location}</p>
+                          <p>
+                            Will Deliver: {post.willDeliver ? 'Yes' : 'No'}{' '}
+                          </p>
+                        </div>
+                        <div className='justify-end card-actions'>
+                          <Link to='/posts/editpost'>
+                            <button
+                              className='btn'
+                              onClick={() => getPostID(post._id, post)}
+                            >
+                              Edit
+                            </button>
+                          </Link>
                           <button
                             className='btn'
-                            onClick={() => getPostID(post._id, post)}
+                            onClick={() => deletePost(post._id, token)}
                           >
-                            Edit
+                            Delete
                           </button>
-                        </Link>
-                        <button
-                          className='btn'
-                          onClick={() => deletePost(post._id, token)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                      {post.messages.length > 0 && (
-                        <div className='p-3 rounded bg-secondary'>
-                          <h1 className='card-title'>Messages:</h1>
-                          {post.messages.map((post, i) => {
-                            return (
-                              <div
-                                className='border-b border-style: solid'
-                                key={i}
-                              >
-                                <div>
-                                  <span className='font-extrabold font-xl'>
-                                    {post.fromUser.username}:{' '}
-                                  </span>
-                                  {post.content}
-                                </div>
-                              </div>
-                            );
-                          })}
                         </div>
-                      )}
-                      <div className='card-body'>
-                        <input
-                          className='m-3 input input-bordered text-secondary'
-                          type='text'
-                          name='content'
-                          value={content}
-                          onChange={(e) => setContent(e.target.value)}
-                        />
-                        <button
-                          className='btn'
-                          onClick={() => messages(post._id)}
-                        >
-                          Message
-                        </button>
+                        {post.messages.length > 0 && (
+                          <div className='p-3 rounded bg-secondary'>
+                            <h1 className='card-title'>Messages:</h1>
+                            {post.messages.map((post, i) => {
+                              return (
+                                <div
+                                  className='border-b border-style: solid'
+                                  key={i}
+                                >
+                                  <div>
+                                    <span className='font-extrabold font-xl'>
+                                      {post.fromUser.username}:{' '}
+                                    </span>
+                                    {post.content}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                        <div className='card-body'>
+                          <input
+                            className='m-3 input input-bordered text-secondary'
+                            type='text'
+                            name='content'
+                            value={content}
+                            onChange={(e) => setContent(e.target.value)}
+                          />
+                          <button
+                            className='btn'
+                            onClick={() => messages(post._id)}
+                          >
+                            Message
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-          <div>
-            <h1 className='m-2 text-2xl font-bold text-primary'>Messages:</h1>
-            {userData.messages.map((message, i) => {
-              return (
-                <div
-                  className='card w-96 bg-primary text-primary-content'
-                  key={i}
-                >
-                  <div className='card-body'>
-                    <h3 className='card-title text-neutral'>
-                      Post: {message.post.title}
-                    </h3>
-                    <div className='p-2 bg-secondary'>
-                      <p>
-                        {message.fromUser.username}: {message.content}
-                      </p>
-                    </div>
-                    {currentUserID !== message.fromUser._id && (
+                    ) : (
+                      'something here'
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+            {/* { messages } */}
+            <div>
+              <h1 className='m-2 text-2xl font-bold text-primary'>Messages:</h1>
+              {userData.messages.map((message, i) => {
+                return (
+                  <div
+                    className='mb-3 card w-96 bg-primary text-primary-content'
+                    key={i}
+                  >
+                    <div className='card-body'>
+                      <h3 className='card-title text-neutral'>
+                        Post: {message.post.title}
+                      </h3>
+                      <div className='p-2 bg-secondary'>
+                        <p>
+                          {message.fromUser.username}: {message.content}
+                        </p>
+                      </div>
+                      {/* {currentUserID !== message.fromUser._id && (
                       <div className='justify-end card-actions'>
                         <Link to='/account/messages'>
                           <button
@@ -207,11 +213,12 @@ const Profile = ({
                           </button>
                         </Link>
                       </div>
-                    )}
+                    )} */}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       )}
